@@ -1,5 +1,7 @@
-const GlobalStyles = () => {
-  return <div></div>;
+import "./GlobalStyles.scss";
+
+const GlobalStyles = ({ children }) => {
+  return children;
 };
 
 export default GlobalStyles;
