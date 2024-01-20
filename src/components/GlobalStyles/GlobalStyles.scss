@@ -21,17 +21,6 @@
   scroll-behavior: smooth;
 }
 
-body {
-  overflow: hidden;
-  --font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 500;
-  font-size: 1.8rem;
-  line-height: 1.5;
-  // text-rendering: optimizeSpeed;
-  color: var(--text-color);
-  // overflow-y: overlay;
-}
-
 footer {
   height: 60vh;
 }
