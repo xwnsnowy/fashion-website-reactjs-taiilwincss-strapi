@@ -51,7 +51,7 @@ const DefaultHeader = () => {
   ];
   return (
     <header className="relative z-40 bg-white  text-black shadow-xl duration-200 ">
-      <div className="h-full w-full bg-slate-300 py-4 dark:bg-slate-700 dark:text-white">
+      <div className="h-full w-full bg-white py-4 dark:bg-slate-700 dark:text-white">
         <div className="container flex items-center justify-between border-b-violet-300">
           <div>
             <a href="" className="flex gap-2 text-2xl font-bold sm:text-3xl">
@@ -68,25 +68,25 @@ const DefaultHeader = () => {
                   className="focus:border-1 w-full rounded-full border border-gray-300 py-1 pl-6 
  transition-all duration-300 focus:border-black focus:outline-none"
                 /> */}
-                <IoMdSearch className="group-hover:text-primary absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-white" />
+                <IoMdSearch className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-black group-hover:text-primary" />
               </div>
 
               {/* Icon User */}
-              <button className="from-primary to-secondary group flex cursor-pointer items-center gap-3 rounded-full bg-gradient-to-r px-4 py-1 text-white">
+              <button className="group flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
                 <span className="hidden text-sm transition duration-700 ease-in-out group-hover:block">
                   User
                 </span>
-                <FaUserTie className="text-xl drop-shadow-sm" />
+                <FaUserTie className="text-xl drop-shadow-sm " />
               </button>
 
               {/* Icon Cart */}
-              <button className="from-primary to-secondary group flex cursor-pointer items-center gap-3 rounded-full bg-gradient-to-r px-4 py-1 text-white transition duration-700 ease-in-out">
+              <button className="group flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
                 <span className="hidden text-sm group-hover:block">Order</span>
                 <TiShoppingCart className="text-xl drop-shadow-sm" />
               </button>
 
               {/* Icon Telephone */}
-              <button className="from-primary to-secondary group flex cursor-pointer items-center gap-3 rounded-full bg-gradient-to-r px-4 py-1 text-white  transition duration-700 ease-in-out">
+              <button className="group flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
                 <span className="hidden text-sm group-hover:block">Phone</span>
                 <FaPhoneAlt className="text-xl drop-shadow-sm" />
               </button>
@@ -106,7 +106,7 @@ const DefaultHeader = () => {
             <li key={data.id}>
               <a
                 href={data.link}
-                className="hover:text-primary inline-block px-4 transition-all duration-200"
+                className="inline-block px-4 transition-all duration-200 hover:text-primary"
               >
                 {data.name}
               </a>
@@ -130,7 +130,7 @@ const DefaultHeader = () => {
                   <li key={data.id}>
                     <a
                       href={data.link}
-                      className="hover:bg-primary/20 inline-block w-full rounded-md p-2 "
+                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
                     >
                       {data.name}
                     </a>
