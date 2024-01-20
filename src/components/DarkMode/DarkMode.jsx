@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Moon from "../../assets/images/icon-moon-2.png";
-import Sun from "../../assets/images/icon-sun-2.png";
+import Image from "../../assets/images";
 
 const DarkMode = () => {
   const [theme, setTheme] = useState(
@@ -29,7 +28,7 @@ const DarkMode = () => {
     <div className="relative">
       {/* light mode */}
       <img
-        src={Moon}
+        src={Image.moon}
         alt="Moon"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         className={`absolute right-0 z-10 w-7 cursor-pointer transition-all duration-300 ${
@@ -38,7 +37,7 @@ const DarkMode = () => {
       />
       {/* dark mode */}
       <img
-        src={Sun}
+        src={Image.sun}
         alt="Sun"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         className={`w-7 cursor-pointer transition-all duration-300 ${theme === "dark" ? "opacity-0" : "opacity-100"}`}
