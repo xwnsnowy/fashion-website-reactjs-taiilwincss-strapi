@@ -1,4 +1,4 @@
-import Image from "../../assets/images";
+import images from "../../assets/images";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,21 +21,21 @@ const Hero = ({ handleOrderPopup }) => {
   const ImageList = [
     {
       id: 1,
-      img: Image.slider1,
+      img: images.slider1,
       title: "Upto 50% off on all Men's Wear",
       description:
         "lorem His Life will forever be Changed dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 2,
-      img: Image.slider2,
+      img: images.slider2,
       title: "30% off on all Women's Wear",
       description:
         "Who's there lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 3,
-      img: Image.slider3,
+      img: images.slider3,
       title: "70% off on all Products Sale",
       description:
         "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

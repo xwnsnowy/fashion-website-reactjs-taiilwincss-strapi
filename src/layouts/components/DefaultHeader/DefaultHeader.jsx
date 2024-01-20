@@ -2,6 +2,7 @@ import { FaUserTie, FaPhoneAlt, FaCaretDown } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoMdSearch } from "react-icons/io";
 import DarkMode from "../../../components/DarkMode";
+import images from "../../../assets/images";
 
 const DefaultHeader = () => {
   const Menu = [
@@ -51,15 +52,26 @@ const DefaultHeader = () => {
   ];
   return (
     <header className="relative z-40 bg-white  text-black shadow-xl duration-200 ">
-      <div className="h-full w-full bg-white py-4 dark:bg-slate-700 dark:text-white">
+      <div className="h-full w-full bg-white py-7 dark:bg-slate-700 dark:text-white">
         <div className="container flex items-center justify-between border-b-violet-300">
-          <div>
-            <a href="" className="flex gap-2 text-2xl font-bold sm:text-3xl">
-              <span>Fashion</span>
-            </a>
+          <div className="group flex items-center justify-center gap-2">
+            <img src={images.usa} alt="USA" className="w-8 cursor-pointer" />
+            <span>
+              <FaCaretDown className="cursor-pointer group-hover:rotate-180" />
+            </span>
+          </div>
+          <div className="flex items-center">
+            <div className="right-0 h-px w-12 rotate-90 border border-black"></div>
+            <div className="space-x-3">
+              <a href="" className="flex gap-2 text-2xl font-bold sm:text-3xl">
+                <span className="text-2xl font-bold uppercase tracking-widest text-neutral-800">
+                  COSMIC FASHION
+                </span>
+              </a>
+            </div>
           </div>
           <div>
-            <div className="flex items-center justify-center space-x-2">
+            <div className="flex items-center justify-center space-x-2 font-bold">
               {/* Search Header*/}
               <div className="w-50 relative flex rounded-md border-gray-300 ">
                 {/* <input
