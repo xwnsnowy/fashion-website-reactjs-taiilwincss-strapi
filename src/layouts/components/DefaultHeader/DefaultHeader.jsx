@@ -52,7 +52,7 @@ const DefaultHeader = () => {
   ];
   return (
     <header className="relative z-40 bg-white  text-black shadow-xl duration-200 ">
-      <div className="h-full w-full bg-white py-8 dark:bg-slate-700 dark:text-white">
+      <div className="h-full w-full bg-white py-6 dark:bg-slate-700 dark:text-white">
         <div className="container flex items-center justify-between border-b-violet-300">
           <div className="group flex items-center justify-center gap-2">
             <img src={images.usa} alt="USA" className="w-8 cursor-pointer" />
@@ -112,7 +112,7 @@ const DefaultHeader = () => {
         </div>
       </div>
 
-      <div className="container mt-2 flex items-center justify-center">
+      <div className="container mt-2 flex items-center justify-center pb-2">
         <ul className="relative hidden cursor-pointer items-center gap-4 sm:flex">
           {Menu.map((data) => (
             <li key={data.id}>

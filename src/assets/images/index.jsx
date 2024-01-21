@@ -4,6 +4,9 @@ import slider1 from "./slider/slider-home-1.png";
 import slider2 from "./slider/slider-home-2.png";
 import slider3 from "./slider/slider-home-3.png";
 import usa from "./language/usa.png";
+import shirt1 from "./products/shirts/shirt-1.png";
+import shirt2 from "./products/shirts/shirt-2.png";
+import shirt3 from "./products/shirts/shirt-3.png";
 
 const images = {
   moon: moon,
@@ -12,6 +15,9 @@ const images = {
   slider2: slider2,
   slider3: slider3,
   usa: usa,
+  shirt1: shirt1,
+  shirt2: shirt2,
+  shirt3: shirt3,
 };
 
 export default images;
