@@ -1,4 +1,4 @@
-import images from "../../assets/images";
+import images from "../../../assets/images";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
