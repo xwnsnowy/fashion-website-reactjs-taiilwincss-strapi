@@ -1,6 +1,6 @@
 import images from "../../../assets/images";
 
-import { FaStar } from "react-icons/fa6";
+// import { FaStar } from "react-icons/fa6";
 
 const ProductsData = [
   {
@@ -44,11 +44,15 @@ const Products = () => {
         <div className="mx-auto mb-10 max-w-[600px] text-center ">
           <h1
             data-aos="fade-up"
-            className="font-[Kaisei-Tokumin] text-3xl font-extrabold uppercase text-black"
+            className="font-['Kaisei-Tokumin'] text-3xl font-extrabold uppercase
+text-black"
           >
             a style that fits everyone
           </h1>
-          <p data-aos="fade-up" className="text-md font-extrabold text-black">
+          <p
+            data-aos="fade-up"
+            className="text-md font-semibold text-neutral-800"
+          >
             Be inspired by sleek shapes, fresh colors and expressive prints
           </p>
           <h3 data-aos="fade-up" className="text-md text-black underline">

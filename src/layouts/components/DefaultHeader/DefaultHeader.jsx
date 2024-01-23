@@ -51,7 +51,7 @@ const DefaultHeader = () => {
     },
   ];
   return (
-    <header className="relative z-40 bg-white  text-black shadow-xl duration-200 ">
+    <header className="relative z-40 bg-white  text-black shadow-xl duration-200">
       <div className="h-full w-full bg-white py-6 dark:bg-slate-700 dark:text-white">
         <div className="container flex items-center justify-between border-b-violet-300">
           <div className="group flex items-center justify-center gap-2">
@@ -64,7 +64,7 @@ const DefaultHeader = () => {
             <div className="right-0 h-px w-12 rotate-90 border border-black"></div>
             <div className="space-x-3">
               <a href="" className="flex gap-2 text-2xl font-bold sm:text-3xl">
-                <span className="text-2xl font-bold uppercase tracking-widest text-neutral-800">
+                <span className="font-['Jura'] text-2xl font-bold uppercase tracking-widest  text-neutral-800 ">
                   COSMIC FASHION
                 </span>
               </a>
