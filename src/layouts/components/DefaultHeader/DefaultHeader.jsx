@@ -148,8 +148,8 @@ const DefaultHeader = () => {
           </div>
         </div>
       </div>
-
-      <div className="container mt-2 flex items-center justify-center pb-2">
+      <hr />
+      <div className="container flex items-center justify-center py-3">
         <ul className="relative hidden cursor-pointer items-center gap-4 sm:flex">
           {Menu.map((data) => (
             <li key={data.id}>
