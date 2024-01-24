@@ -92,9 +92,12 @@ const DefaultHeader = () => {
               </button>
 
               {/* Icon Cart */}
-              <button className="group flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
+              <button className="group relative flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
                 <span className="hidden text-sm group-hover:block">Order</span>
                 <TiShoppingCart className="text-xl drop-shadow-sm" />
+                <div className="absolute -top-2 right-1 flex h-5 w-5 items-center justify-center rounded-lg bg-gray-700 text-base font-normal text-white">
+                  0
+                </div>
               </button>
 
               {/* Icon Telephone */}
