@@ -1,6 +1,6 @@
 const BannerTop = () => {
   return (
-    <section className="mb-12 flex items-center justify-center bg-red-800 p-20 text-white">
+    <section className="my-10 flex items-center justify-center bg-red-900 p-16 text-white">
       <div>
         <h2 className="text-5xl">
           New Markdowns Just Added:

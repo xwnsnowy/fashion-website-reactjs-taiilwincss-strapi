@@ -82,7 +82,7 @@ const DefaultHeader = () => {
   ];
 
   return (
-    <header className="relative z-40 bg-white  text-black shadow-xl duration-200">
+    <header className="webkit-sticky sticky left-0 top-0 z-40 w-full bg-white  text-black shadow-xl duration-200">
       <div className="h-full w-full bg-white py-6 dark:bg-slate-700 dark:text-white">
         <div className="container flex items-center justify-between border-b-violet-300">
           <div className="group flex items-center justify-center gap-2">
