@@ -3,8 +3,54 @@ import { TiShoppingCart } from "react-icons/ti";
 import { IoMdSearch } from "react-icons/io";
 import DarkMode from "../../../components/DarkMode";
 import images from "../../../assets/images";
+import { Link } from "react-router-dom";
 
 const DefaultHeader = () => {
+  const DropdownMenWear = [
+    {
+      id: 1,
+      name: "Tops",
+      link: "/",
+    },
+    {
+      id: 2,
+      name: "Sweaters",
+      link: "/collections/men-sweaters",
+    },
+    {
+      id: 3,
+      name: "Jeans & Denim",
+      link: "/",
+    },
+    {
+      id: 4,
+      name: "Pants & Bottoms",
+      link: "/",
+    },
+  ];
+  const DropdownWomenWear = [
+    {
+      id: 1,
+      name: "Tops",
+      link: "/",
+    },
+    {
+      id: 2,
+      name: "Sweaters",
+      link: "/",
+    },
+    {
+      id: 3,
+      name: "Jeans & Denim",
+      link: "/",
+    },
+    {
+      id: 4,
+      name: "Pants & Bottoms",
+      link: "/",
+    },
+  ];
+
   const Menu = [
     {
       id: 1,
@@ -13,43 +59,28 @@ const DefaultHeader = () => {
     },
     {
       id: 2,
-      name: "Top Rated",
+      name: "Men Wear",
       link: "/#services",
+      children: DropdownMenWear,
     },
     {
       id: 3,
-      name: "Kids Wear",
+      name: "Women Wear",
+      link: "/#",
+      children: DropdownWomenWear,
+    },
+    {
+      id: 4,
+      name: "About",
       link: "/#",
     },
     {
-      id: 3,
-      name: "Mens Wear",
-      link: "/#",
-    },
-    {
-      id: 3,
-      name: "Electronics",
+      id: 5,
+      name: "Everworld Stories",
       link: "/#",
     },
   ];
 
-  const DropdownLinks = [
-    {
-      id: 1,
-      name: "Trending Products",
-      link: "/#",
-    },
-    {
-      id: 2,
-      name: "Best Selling",
-      link: "/#",
-    },
-    {
-      id: 3,
-      name: "Top Rated",
-      link: "/#",
-    },
-  ];
   return (
     <header className="relative z-40 bg-white  text-black shadow-xl duration-200">
       <div className="h-full w-full bg-white py-6 dark:bg-slate-700 dark:text-white">
@@ -63,11 +94,14 @@ const DefaultHeader = () => {
           <div className="flex items-center">
             <div className="right-0 h-px w-12 rotate-90 border border-black"></div>
             <div className="space-x-3">
-              <a href="" className="flex gap-2 text-2xl font-bold sm:text-3xl">
+              <Link
+                to="/"
+                className="flex gap-2 text-2xl font-bold sm:text-3xl"
+              >
                 <span className="font-['Jura'] text-2xl font-bold uppercase tracking-widest  text-neutral-800 ">
                   COSMIC FASHION
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div>
@@ -119,41 +153,42 @@ const DefaultHeader = () => {
         <ul className="relative hidden cursor-pointer items-center gap-4 sm:flex">
           {Menu.map((data) => (
             <li key={data.id}>
-              <a
-                href={data.link}
-                className="inline-block px-4 transition-all duration-200 hover:text-primary"
-              >
-                {data.name}
-              </a>
+              {data.children ? (
+                <div className="group relative cursor-pointer">
+                  <a
+                    href=""
+                    className="flex items-center gap-2 py-2 transition-all duration-200"
+                  >
+                    {data.name}
+                    <span>
+                      <FaCaretDown className="group-hover:rotate-180" />
+                    </span>
+                  </a>
+                  <div className="absolute z-[9999] hidden w-[200px] rounded-md bg-white p-2 text-black shadow-md group-hover:block">
+                    <ul>
+                      {data.children.map((childData) => (
+                        <li key={childData.id}>
+                          <a
+                            href={childData.link}
+                            className="inline-block w-full rounded-md p-2 hover:bg-primary/20"
+                          >
+                            {childData.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  href={data.link}
+                  className="inline-block px-4 transition-all duration-200 hover:text-primary"
+                >
+                  {data.name}
+                </a>
+              )}
             </li>
           ))}
-
-          <li className="group relative cursor-pointer">
-            <a
-              href=""
-              className="flex items-center gap-2 py-2 transition-all duration-200"
-            >
-              Trending
-              <span>
-                <FaCaretDown className="group-hover:rotate-180" />
-              </span>
-            </a>
-
-            <div className="absolute z-[9999] hidden w-[200px] rounded-md bg-white p-2 text-black shadow-md group-hover:block">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
         </ul>
       </div>
     </header>
