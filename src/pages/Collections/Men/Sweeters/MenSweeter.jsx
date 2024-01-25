@@ -151,7 +151,7 @@ const MenSweeter = () => {
                   name="price"
                   onChange={handleSortPriceLowTo}
                 />
-                <label htmlFor="asc">Price (Lowest first)</label>
+                <label htmlFor="asc"> Price (Lowest first)</label>
               </div>
               <div>
                 <input
@@ -161,7 +161,7 @@ const MenSweeter = () => {
                   name="price"
                   onChange={handleSortPriceHighTo}
                 />
-                <label htmlFor="desc">Price (Highest first)</label>
+                <label htmlFor="desc"> Price (Highest first)</label>
               </div>
             </div>
           )}

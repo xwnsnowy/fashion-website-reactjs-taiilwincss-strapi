@@ -6,7 +6,7 @@ const ListProducts = () => {
       <span>Home / Men</span>
       <h1>Mens Sweaters - Cashmere, Cardigans & Crewnecks</h1>
 
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-10">
         <div>
           <img src={images.shirt1} alt="" />
           <div className="flex justify-between">

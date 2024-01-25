@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.7",
+    "antd": "^5.13.2",
     "aos": "^2.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

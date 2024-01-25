@@ -1,5 +1,6 @@
 import config from "../config";
 import About from "../pages/About";
+import Cart from "../pages/Cart";
 import MenSweeter from "../pages/Collections/Men/Sweeters/MenSweeter";
 import EverworldStories from "../pages/EverworldStories/EverworldStories";
 import Home from "../pages/Home";
@@ -11,6 +12,7 @@ const publicRoutes = [
   { path: config.routes.menSweaters, component: MenSweeter },
   { path: config.routes.about, component: About },
   { path: config.routes.everworldStories, component: EverworldStories },
+  { path: config.routes.cart, component: Cart },
 ];
 
 const privateRoutes = [];

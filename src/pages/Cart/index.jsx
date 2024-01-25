@@ -1,5 +1,1 @@
-const Cart = () => {
-  return <div></div>;
-};
-
-export default Cart;
+export { default } from "./Cart";

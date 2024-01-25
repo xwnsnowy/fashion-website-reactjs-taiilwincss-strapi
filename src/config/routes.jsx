@@ -4,6 +4,7 @@ const routes = {
   menSweaters: "/collections/men-sweaters",
   about: "/about",
   everworldStories: "/everworld",
+  cart: "/cart",
 };
 
 export default routes;
