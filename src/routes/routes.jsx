@@ -1,4 +1,5 @@
 import config from "../config";
+import CartLayout from "../layouts/CartLayout/CartLayout";
 import About from "../pages/About";
 import Cart from "../pages/Cart";
 import MenSweeter from "../pages/Collections/Men/Sweeters/MenSweeter";
@@ -12,7 +13,7 @@ const publicRoutes = [
   { path: config.routes.menSweaters, component: MenSweeter },
   { path: config.routes.about, component: About },
   { path: config.routes.everworldStories, component: EverworldStories },
-  { path: config.routes.cart, component: Cart },
+  { path: config.routes.cart, component: Cart, Layout: CartLayout },
 ];
 
 const privateRoutes = [];

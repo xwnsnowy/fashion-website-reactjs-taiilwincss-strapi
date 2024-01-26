@@ -7,6 +7,7 @@ import usa from "./language/usa.png";
 import shirt1 from "./products/shirts/shirt-1.png";
 import shirt2 from "./products/shirts/shirt-2.png";
 import shirt3 from "./products/shirts/shirt-3.png";
+import freeship from "./cart/free-ship.png";
 
 const images = {
   moon: moon,
@@ -18,6 +19,7 @@ const images = {
   shirt1: shirt1,
   shirt2: shirt2,
   shirt3: shirt3,
+  freeship: freeship,
 };
 
 export default images;

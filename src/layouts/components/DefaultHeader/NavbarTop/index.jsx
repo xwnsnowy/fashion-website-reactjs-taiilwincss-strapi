@@ -44,7 +44,9 @@ const NavbarTop = () => {
                 title={<CartTooltip />}
                 color="grey"
               >
-                <TiShoppingCart className="text-xl drop-shadow-sm" />
+                <Link to="/cart">
+                  <TiShoppingCart className="text-xl drop-shadow-sm" />
+                </Link>
               </Tooltip>
               <div className="absolute -top-2 right-1 flex h-5 w-5 items-center justify-center rounded-lg bg-gray-700 text-base font-normal text-white">
                 0
