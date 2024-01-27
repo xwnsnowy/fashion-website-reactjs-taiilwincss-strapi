@@ -1,5 +1,5 @@
 import config from "../config";
-import CartLayout from "../layouts/CartLayout/CartLayout";
+import CartLayout from "../layouts/CartLayout";
 import About from "../pages/About";
 import Cart from "../pages/Cart";
 import MenSweeter from "../pages/Collections/Men/Sweeters/MenSweeter";

@@ -1,4 +1,4 @@
-import CartHeader from "../components/CartHeader/CartHeader";
+import CartHeader from "../components/CartHeader/";
 
 const CartLayout = ({ children }) => {
   return (
