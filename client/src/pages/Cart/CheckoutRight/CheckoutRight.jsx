@@ -19,15 +19,15 @@ const CheckoutRight = () => {
         <div className="flex items-center justify-center bg-[#ebf9eb] py-1">
           <p className="text-sm">Free Shipping</p>
         </div>
-        <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-8">
+        <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-6">
           <div className="flex items-center gap-2">
             <BsCart4 className="h-5 w-5" />
-            <span className="font-semibold">Cart (1)</span>
+            <span className="text-lg font-semibold">Cart (1)</span>
             <div className="h-[10px] w-[10px] rounded-full bg-[#297a3a]"></div>
           </div>
           <p>₫2,871,977.81</p>
         </div>
-        <div className=" flex flex-col px-6 py-4">
+        <div className=" flex flex-col gap-4 px-6 py-4">
           {/* product in purschasing */}
           <div className="flex w-full gap-3">
             <img
@@ -306,7 +306,7 @@ const CheckoutRight = () => {
           </div>
           {/* place order */}
         </div>
-        <div className="sticky bottom-0 z-10 flex flex-col items-center justify-between bg-white px-6 py-8 ">
+        <div className="sticky bottom-0 z-10 flex flex-col items-center justify-between bg-white px-6 py-6 ">
           <div className="flex w-full items-center justify-center bg-[#e1e0e0] py-4 text-center text-[#737373]">
             <button className="flex items-center justify-center uppercase">
               <span className="font-semibold">PLACE ORDER</span>
