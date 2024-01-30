@@ -1,17 +1,25 @@
 import { useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import ListProducts from "../../ListProducts";
+import useAxios from "../../../../hooks/useAxios";
 
 const MenSweeter = () => {
+  const data = useAxios("products?populate=*");
+
+  console.log(data);
+
   const [showCategory, setShowCategory] = useState(false);
 
   const [showFilterPrice, setShowFilterPrice] = useState(false);
+
   const [maxPrice, setMaxPrice] = useState(10000);
 
   const [showSortPrice, setShowSortPrice] = useState(false);
+
   const [sort, setSort] = useState(null);
 
   const [showColor, setShowColor] = useState(false);
+
   const [showSize, setShowSize] = useState(false);
 
   const toggleCategory = () => {
