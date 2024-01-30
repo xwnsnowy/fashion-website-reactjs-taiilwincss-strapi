@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const API_ENDPOINT = import.meta.env.REACT_APP_API_TOKEN;
-
-const TOKEN = "bearer " + import.meta.env.REACT_APP_API_TOKEN;
+const API_ENDPOINT = import.meta.env.VITE_REACT_APP_API_URL;
+const TOKEN = "bearer " + import.meta.env.VITE_REACT_APP_API_TOKEN;
 
 const useAxios = (url, method = "get", body = {}) => {
   const [data, setData] = useState("");
