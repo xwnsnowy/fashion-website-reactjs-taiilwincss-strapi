@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "discount_price": {
+      "type": "decimal"
+    },
+    "original_price": {
+      "type": "decimal"
+    },
+    "model": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "text"
+    },
+    "care": {
+      "type": "text"
+    },
+    "product_size_colors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-size-color.product-size-color",
+      "mappedBy": "product"
+    },
+    "sub_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sub-category.sub-category",
+      "inversedBy": "products"
+    },
+    "product_images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-image.product-image",
+      "mappedBy": "product"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "normal",
+        "trending"
+      ]
+    }
+  }
+}

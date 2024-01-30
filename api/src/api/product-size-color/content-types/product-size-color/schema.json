@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_size_colors",
+  "info": {
+    "singularName": "product-size-color",
+    "pluralName": "product-size-colors",
+    "displayName": "product_size_color",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "product_size_colors"
+    },
+    "color": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::color.color",
+      "inversedBy": "product_size_colors"
+    },
+    "size": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::size.size",
+      "inversedBy": "product_size_colors"
+    },
+    "product_image": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-image.product-image",
+      "inversedBy": "product_size_colors"
+    }
+  }
+}

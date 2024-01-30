@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sizes",
+  "info": {
+    "singularName": "size",
+    "pluralName": "sizes",
+    "displayName": "size"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "product_size_colors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-size-color.product-size-color",
+      "mappedBy": "size"
+    }
+  }
+}
