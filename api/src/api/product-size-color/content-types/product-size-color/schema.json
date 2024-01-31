@@ -23,9 +23,9 @@
     },
     "color": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::color.color",
-      "inversedBy": "product_size_colors"
+      "inversedBy": "product_size_color"
     },
     "size": {
       "type": "relation",

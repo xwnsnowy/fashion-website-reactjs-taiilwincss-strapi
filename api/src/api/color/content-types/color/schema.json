@@ -14,9 +14,9 @@
     "name": {
       "type": "string"
     },
-    "product_size_colors": {
+    "product_size_color": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::product-size-color.product-size-color",
       "mappedBy": "color"
     }

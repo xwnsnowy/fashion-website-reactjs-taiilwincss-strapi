@@ -61,12 +61,6 @@
       "relation": "oneToMany",
       "target": "api::product-size-color.product-size-color",
       "mappedBy": "product_image"
-    },
-    "product": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "product_images"
     }
   }
 }

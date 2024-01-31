@@ -829,9 +829,9 @@ export interface ApiColorColor extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    product_size_colors: Attribute.Relation<
+    product_size_color: Attribute.Relation<
       'api::color.color',
-      'oneToMany',
+      'oneToOne',
       'api::product-size-color.product-size-color'
     >;
     createdAt: Attribute.DateTime;
@@ -881,11 +881,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::sub-category.sub-category'
     >;
-    product_images: Attribute.Relation<
-      'api::product.product',
-      'oneToMany',
-      'api::product-image.product-image'
-    >;
     type: Attribute.Enumeration<['normal', 'trending']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -926,11 +921,6 @@ export interface ApiProductImageProductImage extends Schema.CollectionType {
       'oneToMany',
       'api::product-size-color.product-size-color'
     >;
-    product: Attribute.Relation<
-      'api::product-image.product-image',
-      'manyToOne',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -970,7 +960,7 @@ export interface ApiProductSizeColorProductSizeColor
     >;
     color: Attribute.Relation<
       'api::product-size-color.product-size-color',
-      'manyToOne',
+      'oneToOne',
       'api::color.color'
     >;
     size: Attribute.Relation<

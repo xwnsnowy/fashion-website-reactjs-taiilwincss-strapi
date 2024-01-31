@@ -45,12 +45,6 @@
       "target": "api::sub-category.sub-category",
       "inversedBy": "products"
     },
-    "product_images": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product-image.product-image",
-      "mappedBy": "product"
-    },
     "type": {
       "type": "enumeration",
       "enum": [
