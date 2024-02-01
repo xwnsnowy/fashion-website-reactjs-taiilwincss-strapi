@@ -3,9 +3,23 @@ import useAxios from "../../../../hooks/useAxios";
 import ProductFilterSidebar from "../../../../components/ProductFilterSidebar";
 
 const MenSweeter = () => {
-  const { data, loading, error } = useAxios(
-    "products?populate=*,product_size_colors.color,product_size_colors.size,product_size_colors.product_image.img_1,product_size_colors.product_image.img_2,product_size_colors.product_image.img_3,product_size_colors.product_image.img_4",
-  );
+  // eslint-disable-next-line no-undef
+  const qs = require("qs");
+
+  const queryObject = {
+    populate: [
+      "product_size_colors.color",
+      "product_size_colors.size",
+      "product_size_colors.product_image.img_1",
+      "product_size_colors.product_image.img_2",
+      "product_size_colors.product_image.img_3",
+      "product_size_colors.product_image.img_4",
+    ],
+  };
+
+  const query = qs.stringify(queryObject, { encodeValuesOnly: true });
+
+  const { data, loading, error } = useAxios(`products?${query}`);
 
   console.log(data);
 
