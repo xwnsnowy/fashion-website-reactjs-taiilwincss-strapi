@@ -1,4 +1,5 @@
 import { FaCaretDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NavbarBottom = () => {
   const DropdownMenWear = [
@@ -10,7 +11,7 @@ const NavbarBottom = () => {
     {
       id: 2,
       name: "Sweaters",
-      link: "/collections/men-sweaters",
+      link: "/collections/mens-sweaters",
     },
     {
       id: 3,
@@ -32,7 +33,7 @@ const NavbarBottom = () => {
     {
       id: 2,
       name: "Sweaters",
-      link: "/",
+      link: "/collections/womens-sweaters",
     },
     {
       id: 3,
@@ -82,37 +83,37 @@ const NavbarBottom = () => {
           <li key={data.id}>
             {data.children ? (
               <div className="group relative cursor-pointer">
-                <a
-                  href=""
+                <Link
+                  to=""
                   className="flex items-center gap-2 py-2 transition-all duration-200"
                 >
                   {data.name}
                   <span>
                     <FaCaretDown className="group-hover:rotate-180" />
                   </span>
-                </a>
+                </Link>
                 <div className="absolute z-[9999] hidden w-[200px] rounded-md bg-white p-2 text-black shadow-md group-hover:block">
                   <ul>
                     {data.children.map((childData) => (
                       <li key={childData.id}>
-                        <a
-                          href={childData.link}
+                        <Link
+                          to={childData.link}
                           className="inline-block w-full rounded-md p-2 hover:bg-primary/20"
                         >
                           {childData.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
             ) : (
-              <a
-                href={data.link}
+              <Link
+                to={data.link}  
                 className="inline-block px-4 transition-all duration-200 hover:text-primary"
               >
                 {data.name}
-              </a>
+              </Link>
             )}
           </li>
         ))}

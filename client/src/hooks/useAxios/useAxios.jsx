@@ -17,6 +17,7 @@ const useAxios = (url, method = "get", body = {}) => {
         },
         body,
       });
+      console.log(url);
       setData(responseData.data);
     } catch (err) {
       setError(err);

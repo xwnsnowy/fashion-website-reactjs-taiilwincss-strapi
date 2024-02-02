@@ -1,7 +1,8 @@
 const routes = {
   home: "/",
-  productDetail: "/product-detail",
-  menSweaters: "/collections/men-sweaters",
+  productDetail: "/products/:productName",
+  mensSweaters: "/collections/mens-sweaters",
+  womensSweaters: "/collections/womens-sweaters",
   about: "/about",
   everworldStories: "/everworld",
   cart: "/cart",
