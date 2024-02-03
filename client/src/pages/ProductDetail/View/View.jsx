@@ -2,18 +2,32 @@ import { useRef, useState } from "react";
 import images from "../../../assets/images";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const View = () => {
+const View = ({ productDetail }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
   const sliderRef = useRef(null);
 
-  const imagesArray = [images.slider1, images.slider2, images.slider3];
+  const imagesArray = [
+    import.meta.env.VITE_REACT_UPLOAD_URL +
+      productDetail.attributes.product_size_colors.data[0].attributes
+        .product_image.data.attributes.img_1.data.attributes.url,
+    import.meta.env.VITE_REACT_UPLOAD_URL +
+      productDetail.attributes.product_size_colors.data[0].attributes
+        .product_image.data.attributes.img_2.data.attributes.url,
+    import.meta.env.VITE_REACT_UPLOAD_URL +
+      productDetail.attributes.product_size_colors.data[0].attributes
+        .product_image.data.attributes.img_3.data.attributes.url,
+    import.meta.env.VITE_REACT_UPLOAD_URL +
+      productDetail.attributes.product_size_colors.data[0].attributes
+        .product_image.data.attributes.img_4.data.attributes.url,
+  ];
 
   const settings = {
     dots: false,
@@ -85,15 +99,22 @@ const View = () => {
 
         <div className="flex-1">
           <h1 className="mb-2 font-['Petrona'] text-3xl font-bold uppercase">
-            Saint laurent
+            {productDetail.attributes.name}
           </h1>
           <p className="text-base font-normal text-neutral-800">
-            Turtle neck Saint Laurent dress
+            {productDetail.attributes.description}
           </p>
-          <p className="my-4 font-['Petrona'] text-lg font-black ">$3,200</p>
+          <p className="my-4 font-['Petrona'] text-lg font-black ">
+            ${productDetail.attributes.original_price}
+          </p>
           <p>
             Color:
-            <span className="font-['Petrona'] text-lg font-bold"> Black</span>
+            <span className="ml-1 font-['Petrona'] text-lg font-bold">
+              {
+                productDetail.attributes.product_size_colors.data[0].attributes
+                  .color.data.attributes.name
+              }
+            </span>
           </p>
           <p className="relative top-6 mb-3">Size:</p>
           <div className="mb-4">
@@ -155,6 +176,10 @@ const View = () => {
       </div>
     </div>
   );
+};
+
+View.propTypes = {
+  productDetail: PropTypes.object.isRequired,
 };
 
 export default View;

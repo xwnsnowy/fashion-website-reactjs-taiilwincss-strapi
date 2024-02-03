@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-const Detail = () => {
+const Detail = ({ productDetail }) => {
   const [activeTab, setActiveTab] = useState("details");
 
   const handleTabClick = (tab) => {
@@ -40,10 +41,10 @@ const Detail = () => {
       {activeTab === "details" && (
         <div>
           <h1 className="mb-2 mt-6 text-3xl font-bold uppercase">
-            Saint laurent
+            {productDetail.attributes.name}
           </h1>
           <p className="text-base font-normal text-neutral-800">
-            Turtle neck Saint Laurent dress
+            {productDetail.attributes.description}
           </p>
           <ul className="pl-7">
             <li className="list-disc">Dress</li>
@@ -63,6 +64,10 @@ const Detail = () => {
       {activeTab === "deliveryReturns" && <div>deliveryReturns</div>}
     </div>
   );
+};
+
+Detail.propTypes = {
+  productDetail: PropTypes.object.isRequired,
 };
 
 export default Detail;

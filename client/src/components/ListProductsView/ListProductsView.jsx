@@ -1,12 +1,20 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setProductDetail } from "../../redux/productSlice";
 
 const ListProductsView = ({ data, type }) => {
-  
+  const dispatch = useDispatch();
+
+  const handleClickProduct = (product) => {
+    dispatch(setProductDetail(product));
+  };
+
   const titleMap = {
     "mens-sweaters": "Mens Sweaters - Cashmere, Cardigans & Crewnecks",
     "womens-sweaters": "Women’s Sweaters & Cardigans",
   };
+
   const title = titleMap[type] || "Other Title";
 
   const isWomen = type.toLowerCase().includes("womens");
@@ -24,6 +32,7 @@ const ListProductsView = ({ data, type }) => {
             <div className="relative cursor-pointer">
               <Link
                 to={`/products/${normalizedName(item?.attributes.name)}?collection=${type}`}
+                onClick={() => handleClickProduct(item)}
               >
                 <img
                   src={
