@@ -9,7 +9,7 @@ import ProductDetail from "../pages/ProductDetail";
 
 const publicRoutes = [
   { path: routes.home, component: Home },
-  { path: routes.productDetail, component: ProductDetail },
+  { path: routes.productDetail(":productname"), component: ProductDetail },
   { path: routes.about, component: About },
   { path: routes.everworldStories, component: EverworldStories },
   { path: routes.cart, component: Cart, Layout: CartLayout },

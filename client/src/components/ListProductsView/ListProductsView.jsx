@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ListProductsView = ({ data, type }) => {
+  
   const titleMap = {
     "mens-sweaters": "Mens Sweaters - Cashmere, Cardigans & Crewnecks",
     "womens-sweaters": "Women’s Sweaters & Cardigans",
@@ -9,7 +10,8 @@ const ListProductsView = ({ data, type }) => {
   const title = titleMap[type] || "Other Title";
 
   const isWomen = type.toLowerCase().includes("womens");
-  console.log(isWomen);
+
+  const normalizedName = (input) => input.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <div className="my-5 flex-1">
@@ -17,11 +19,11 @@ const ListProductsView = ({ data, type }) => {
       <h1 className="mb-10 text-4xl">{title}</h1>
 
       <div className="grid grid-cols-3 gap-6">
-        {data.map((item, index) => (
-          <div key={index}>
+        {data.map((item) => (
+          <div key={item?.attributes.id}>
             <div className="relative cursor-pointer">
               <Link
-                to={`/products/${encodeURIComponent(item?.attributes.name.toLowerCase().replace(/ /g, "-"))}?collection=${type}`}
+                to={`/products/${normalizedName(item?.attributes.name)}?collection=${type}`}
               >
                 <img
                   src={
@@ -71,7 +73,7 @@ const ListProductsView = ({ data, type }) => {
 
 ListProductsView.propTypes = {
   data: PropTypes.array.isRequired,
-  type: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ListProductsView;

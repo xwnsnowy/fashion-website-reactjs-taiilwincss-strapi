@@ -1,7 +1,7 @@
+import PropTypes from "prop-types";
 import useAxios from "../../../hooks/useAxios";
 import ProductFilterSidebar from "../../../components/ProductFilterSidebar";
-import ListProductsView from "../ListProductsView";
-import PropTypes from "prop-types";
+import ListProductsView from "../../../components/ListProductsView/ListProductsView";
 
 const ListProducts = ({ type }) => {
   // eslint-disable-next-line no-undef

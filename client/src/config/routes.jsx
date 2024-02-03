@@ -1,6 +1,7 @@
 const routes = {
   home: "/",
-  productDetail: "/products/:productName",
+  productDetail: (productName) =>
+    `/products/${productName.toLowerCase().replace(/\s+/g, "-")}`,
   mensSweaters: "/collections/mens-sweaters",
   womensSweaters: "/collections/womens-sweaters",
   about: "/about",
