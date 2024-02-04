@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import images from "../../../assets/images";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Button, Modal } from "antd";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -11,23 +12,24 @@ import "slick-carousel/slick/slick-theme.css";
 const View = ({ productDetail }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [open, setOpen] = useState(false);
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
 
   const sliderRef = useRef(null);
 
-  const imagesArray = [
-    import.meta.env.VITE_REACT_UPLOAD_URL +
-      productDetail.attributes.product_size_colors.data[0].attributes
-        .product_image.data.attributes.img_1.data.attributes.url,
-    import.meta.env.VITE_REACT_UPLOAD_URL +
-      productDetail.attributes.product_size_colors.data[0].attributes
-        .product_image.data.attributes.img_2.data.attributes.url,
-    import.meta.env.VITE_REACT_UPLOAD_URL +
-      productDetail.attributes.product_size_colors.data[0].attributes
-        .product_image.data.attributes.img_3.data.attributes.url,
-    import.meta.env.VITE_REACT_UPLOAD_URL +
-      productDetail.attributes.product_size_colors.data[0].attributes
-        .product_image.data.attributes.img_4.data.attributes.url,
-  ];
+  const imagesArray = Array.from({ length: 4 }, (_, index) => {
+    const imgIndex = index + 1;
+    return (
+      import.meta.env.VITE_REACT_UPLOAD_URL +
+      (productDetail?.attributes?.product_size_colors?.data?.[0]?.attributes
+        .product_image?.data?.attributes?.[`img_${imgIndex}`]?.data?.attributes
+        ?.url ?? "")
+    );
+  });
 
   const settings = {
     dots: false,
@@ -67,7 +69,7 @@ const View = ({ productDetail }) => {
                 alt=""
                 className={`h-40 w-28 cursor-pointer border-[1px]  p-2 ${
                   selectedImageIndex === index
-                    ? " border-2 border-stone-900"
+                    ? " border-[4px] border-gray-400"
                     : "border-[#ddd]"
                 }`}
                 onClick={() => handleThumbnailClick(index)}
@@ -75,8 +77,7 @@ const View = ({ productDetail }) => {
               />
             ))}
           </div>
-          {/* main img */}
-
+          {/* slider  */}
           <div className="flex flex-1 items-center justify-center ">
             <Slider
               {...settings}
@@ -99,46 +100,96 @@ const View = ({ productDetail }) => {
 
         <div className="flex-1">
           <h1 className="mb-2 font-['Petrona'] text-3xl font-bold uppercase">
-            {productDetail.attributes.name}
+            {productDetail?.attributes?.name}
           </h1>
-          <p className="text-base font-normal text-neutral-800">
-            {productDetail.attributes.description}
+          <p className="text-base font-normal text-[#737373]">
+            {productDetail?.attributes?.description}
           </p>
           <p className="my-4 font-['Petrona'] text-lg font-black ">
-            ${productDetail.attributes.original_price}
+            ${productDetail?.attributes?.original_price}
           </p>
           <p>
             Color:
             <span className="ml-1 font-['Petrona'] text-lg font-bold">
               {
-                productDetail.attributes.product_size_colors.data[0].attributes
-                  .color.data.attributes.name
+                productDetail?.attributes?.product_size_colors?.data[0]
+                  ?.attributes?.color?.data?.attributes?.name
               }
             </span>
           </p>
+          <div className="mt-2 flex gap-2">
+            <Link to="">
+              <div className="h-9 w-9 rounded-full border-[2px] border-[#fff] bg-black shadow-[0_0_0_1px_#4d4d4d]   "></div>
+            </Link>
+            <Link to="">
+              <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-red-700"></div>
+            </Link>
+            <Link to="">
+              <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-blue-700"></div>
+            </Link>
+          </div>
           <p className="relative top-6 mb-3">Size:</p>
           <div className="mb-4">
             <div className="flex justify-end">
-              <a href="/">
-                <span className="mb-2 inline-block underline">
-                  View size guide
-                </span>
-              </a>
+              <button
+                className="mb-2 inline-block underline"
+                onClick={() => setOpen(true)}
+              >
+                View size guide
+              </button>
+              <Modal
+                centered
+                open={open}
+                onOk={() => setOpen(false)}
+                onCancel={() => setOpen(false)}
+                width={1000}
+                footer={[]}
+              >
+                <h1>Size Guide</h1>
+                <p>some contents...</p>
+                <p>some contents...</p>
+                <p>some contents...</p>
+              </Modal>
             </div>
             <div className="flex space-x-3">
-              <span className="inline-block w-1/5 cursor-pointer border-[1px] border-black px-4 py-2 text-center hover:scale-105 hover:transform hover:bg-gray-300">
+              <span
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                  selectedSize === "XS" ? "border-black" : ""
+                }`}
+                onClick={() => handleSizeClick("XS")}
+              >
                 XS
               </span>
-              <span className="inline-block w-1/5 cursor-pointer border-[1px] border-black px-4 py-2 text-center hover:scale-105 hover:transform hover:bg-gray-300">
+              <span
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                  selectedSize === "S" ? "border-black" : ""
+                }`}
+                onClick={() => handleSizeClick("S")}
+              >
                 S
               </span>
-              <span className="inline-block w-1/5 cursor-pointer border-[1px] border-black px-4 py-2 text-center hover:scale-105 hover:transform hover:bg-gray-300">
+              <span
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                  selectedSize === "M" ? "border-black" : ""
+                }`}
+                onClick={() => handleSizeClick("M")}
+              >
                 M
               </span>
-              <span className="inline-block w-1/5 cursor-pointer border-[1px] border-black px-4 py-2 text-center hover:scale-105 hover:transform hover:bg-gray-300">
+              <span
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                  selectedSize === "L" ? "border-black" : ""
+                }`}
+                onClick={() => handleSizeClick("L")}
+              >
                 L
               </span>
-              <span className="inline-block w-1/5 cursor-pointer border-[1px] border-black px-4 py-2 text-center hover:scale-105 hover:transform hover:bg-gray-300">
+              <span
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                  selectedSize === "XL" ? "border-black" : ""
+                }`}
+                onClick={() => handleSizeClick("XL")}
+              >
                 XL
               </span>
             </div>
@@ -147,18 +198,18 @@ const View = ({ productDetail }) => {
             <p className="mr-4 flex items-center justify-center">Quantity:</p>
             <button
               onClick={decrementQuantity}
-              className="flex h-8 w-8 items-center justify-center border-[1px] border-black text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
+              className="flex h-8 w-8 items-center justify-center border-[1px] border-[#737373] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
             >
               <FaMinus />
             </button>
             <input
               type="text"
               value={quantity}
-              className="h-8 w-12 border-b-[1px] border-t-[1px] border-black text-center"
+              className="h-8 w-12 border-b-[1px] border-t-[1px] border-[#737373] text-center"
             />
             <button
               onClick={incrementQuantity}
-              className="flex h-8 w-8 items-center justify-center border-[1px] border-black text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
+              className="flex h-8 w-8 items-center justify-center border-[1px] border-[#737373] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
             >
               <FaPlus />
             </button>
@@ -167,10 +218,37 @@ const View = ({ productDetail }) => {
             </p>
           </div>
           <div className="flex flex-col">
-            <button className="my-4 border-[1px] border-black bg-black py-2 text-white  ">
+            <button className="my-4 border-[1px] border-black bg-black py-2 uppercase text-white">
               Add to bag
             </button>
             <button className="border-[1px] border-black py-2">Wishlist</button>
+          </div>
+          <div className="mt-8 flex border-y-[1px] border-y-slate-300 py-3">
+            <span className="inline-block w-32 text-base font-medium">
+              Model
+            </span>
+            <span>{productDetail?.attributes?.model}</span>
+          </div>
+          <div className="flex border-b-[1px] border-y-slate-300 py-5">
+            <span className="inline-block w-32 text-base font-medium">Fit</span>
+            <div>
+              <p>Questions about fit?</p>
+              <Link to="/" className="underline">
+                <p>Contact Us</p>
+              </Link>
+              <Link to="/" className="underline">
+                <p>Size Guide</p>
+              </Link>
+            </div>
+          </div>
+          <div className="mt-4">
+            <div>
+              <p className="text-lg font-semibold">Sustainability</p>
+            </div>
+            <div className="py-3">
+              <img src="" alt="" />
+              <span className="uppercase">ORGANIC COTTON</span>
+            </div>
           </div>
         </div>
       </div>

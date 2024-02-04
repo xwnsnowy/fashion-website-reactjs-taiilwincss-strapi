@@ -47,9 +47,10 @@ const DefaultFooter = () => {
               {/* <img src={footerLogo} alt="" className="max-w-[50px]" />
               Shopsy */}
             </h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum in
-              beatae ea recusandae blanditiis veritatis.
+            <p className="mt-4 text-center text-gray-500">
+              Embrace the essence of style with our curated collection of
+              <span className="font-bold"> fashion-forward apparel</span>, where
+              every piece speaks volumes about your unique personality.
             </p>
           </div>
 
