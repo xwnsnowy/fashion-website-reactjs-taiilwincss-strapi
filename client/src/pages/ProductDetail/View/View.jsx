@@ -4,19 +4,45 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Modal } from "antd";
 import { IoStar } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/cartReducer";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const View = ({ productDetail }) => {
+  const [productSizeColorNew, setProductSizeColorNew] = useState(
+    productDetail?.attributes?.product_size_colors?.data[0],
+  );
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
 
+  const colorProduct =
+    productDetail?.attributes?.product_size_colors?.data[0]?.attributes?.color
+      ?.data?.attributes?.name;
+
+  const [selectedColor, setSelectedColor] = useState(colorProduct);
+
+  const dispatch = useDispatch();
+
   const handleSizeClick = (size) => {
     setSelectedSize(size);
+  };
+
+  const getProductByColor = (color) => {
+    const productColors = productDetail?.attributes?.product_size_colors?.data;
+    return productColors.find(
+      (item) => item?.attributes?.color?.data?.attributes?.name === color,
+    );
+  };
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+    const newProduct = getProductByColor(color);
+    setProductSizeColorNew(newProduct);
   };
 
   const sliderRef = useRef(null);
@@ -25,9 +51,9 @@ const View = ({ productDetail }) => {
     const imgIndex = index + 1;
     return (
       import.meta.env.VITE_REACT_UPLOAD_URL +
-      (productDetail?.attributes?.product_size_colors?.data?.[0]?.attributes
-        .product_image?.data?.attributes?.[`img_${imgIndex}`]?.data?.attributes
-        ?.url ?? "")
+      (productSizeColorNew.attributes.product_image?.data?.attributes?.[
+        `img_${imgIndex}`
+      ]?.data?.attributes?.url ?? "")
     );
   });
 
@@ -128,18 +154,21 @@ const View = ({ productDetail }) => {
             <p>
               Color:
               <span className="ml-1 font-['Petrona'] text-lg font-bold">
-                {
-                  productDetail?.attributes?.product_size_colors?.data[0]
-                    ?.attributes?.color?.data?.attributes?.name
-                }
+                {productSizeColorNew?.attributes?.color?.data?.attributes?.name}
               </span>
             </p>
             <div className="flex gap-2">
               <Link to="">
-                <div className="h-9 w-9 rounded-full border-[2px] border-[#fff] bg-black shadow-[0_0_0_1px_#4d4d4d]"></div>
+                <div
+                  className={`h-9 w-9 rounded-full border-[2px] border-[#fff] bg-[#4d4d4d]  ${selectedColor === "Heathered Ash" ? "shadow-[0_0_0_1px_#4d4d4d]" : ""}`}
+                  onClick={() => handleColorClick("Heathered Ash")}
+                ></div>
               </Link>
               <Link to="">
-                <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-red-700"></div>
+                <div
+                  className={`h-9 w-9 rounded-full border-[2px] border-[#fff] bg-black  ${selectedColor === "New Black" ? "shadow-[0_0_0_1px_#4d4d4d]" : ""}`}
+                  onClick={() => handleColorClick("New Black")}
+                ></div>
               </Link>
               <Link to="">
                 <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-blue-700"></div>
@@ -231,16 +260,41 @@ const View = ({ productDetail }) => {
             >
               <FaPlus />
             </button>
-            <p className="ml-4 flex items-center justify-center">
-              1 product available
+            <p className="ml-4 flex items-center justify-center gap-1">
+              <span>
+                {
+                  productDetail?.attributes?.product_size_colors?.data[0]
+                    ?.attributes?.quantity
+                }
+              </span>
+              <span>product available</span>
             </p>
           </div>
+          {/* Button Add to bag */}
           <div className="flex flex-col">
-            <button className="my-4 border-[1px] border-black  bg-[#262626] py-2 uppercase text-white hover:bg-black">
+            <button
+              className="my-4 border-[1px] border-black  bg-[#262626] py-2 uppercase text-white hover:bg-black"
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: productDetail?.id,
+                    name: productDetail?.attributes?.name,
+                    price: productDetail?.attributes?.original_price,
+                    img: productDetail?.attributes?.product_size_colors
+                      ?.data?.[0]?.attributes.product_image?.data?.attributes
+                      ?.img_1?.data?.attributes?.url,
+                    selectedSize,
+                    quantity,
+                    selectedColor,
+                  }),
+                )
+              }
+            >
               Add to bag
             </button>
             <button className="border-[1px] border-black py-2">Wishlist</button>
           </div>
+
           <div className="mt-8 flex border-y-[1px] border-y-slate-300 py-3">
             <span className="inline-block w-32 text-base font-medium">
               Model
