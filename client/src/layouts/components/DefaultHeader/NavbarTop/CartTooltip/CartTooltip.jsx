@@ -2,6 +2,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import images from "../../../../../assets/images";
 
 const CartTooltip = () => {
+  
   return (
     <div className="flex flex-col p-1 text-black">
       <h1 className="py-2 font-semibold">New Products Added</h1>

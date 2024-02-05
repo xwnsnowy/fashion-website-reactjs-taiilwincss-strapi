@@ -3,7 +3,6 @@ import { TiShoppingCart } from "react-icons/ti";
 import DarkMode from "../../../../components/DarkMode";
 import images from "../../../../assets/images";
 import { Link } from "react-router-dom";
-import { Tooltip } from "antd";
 import CartTooltip from "./CartTooltip";
 
 const NavbarTop = () => {
@@ -37,21 +36,21 @@ const NavbarTop = () => {
             </button>
 
             {/* Icon Cart */}
-            <button className="group relative flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
-              <span className="hidden text-sm group-hover:block">Order</span>
-              <Tooltip
-                placement="bottomRight"
-                title={<CartTooltip />}
-                color="grey"
-              >
+            <div className="relative">
+              <button className="group relative flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
+                <span className="hidden text-sm group-hover:block">Order</span>
                 <Link to="/cart">
                   <TiShoppingCart className="text-xl drop-shadow-sm" />
                 </Link>
-              </Tooltip>
-              <div className="absolute -top-2 right-1 flex h-5 w-5 items-center justify-center rounded-lg bg-gray-700 text-base font-normal text-white">
-                0
-              </div>
-            </button>
+                <div className="absolute -top-2 right-1 flex h-5 w-5 items-center justify-center rounded-lg bg-gray-700 text-base font-normal text-white">
+                  0
+                </div>
+                <div className="absolute left-1/2 top-full mt-3 hidden w-96 -translate-x-1/2 transform rounded-lg bg-slate-100 shadow-lg group-hover:block">
+                  <CartTooltip />
+                  <div className="absolute -top-3 right-36 h-6 w-6 -translate-x-1/2 rotate-45 transform bg-slate-100"></div>
+                </div>
+              </button>
+            </div>
 
             {/* Icon Telephone */}
             <button className="group flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">

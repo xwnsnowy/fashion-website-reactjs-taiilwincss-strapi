@@ -865,7 +865,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    description: Attribute.Text;
+    title: Attribute.String;
     discount_price: Attribute.Decimal;
     original_price: Attribute.Decimal;
     model: Attribute.String;
@@ -882,6 +882,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::sub-category.sub-category'
     >;
     type: Attribute.Enumeration<['normal', 'trending']>;
+    description: Attribute.Text;
+    fit: Attribute.String;
+    made: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

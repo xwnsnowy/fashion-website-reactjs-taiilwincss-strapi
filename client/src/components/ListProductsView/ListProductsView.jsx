@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setProductDetail } from "../../redux/productSlice";
+import { setProductDetail } from "../../redux/productReducer";
 
 const ListProductsView = ({ data, type }) => {
   const dispatch = useDispatch();

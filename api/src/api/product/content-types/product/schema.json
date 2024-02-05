@@ -15,8 +15,8 @@
     "name": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
+    "title": {
+      "type": "string"
     },
     "discount_price": {
       "type": "decimal"
@@ -51,6 +51,15 @@
         "normal",
         "trending"
       ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "fit": {
+      "type": "string"
+    },
+    "made": {
+      "type": "string"
     }
   }
 }

@@ -9,8 +9,8 @@ const Detail = ({ productDetail }) => {
   };
 
   return (
-    <div className="container">
-      <div className="mb-1 space-x-3">
+    <div className="container min-h-[380px]">
+      <div className="mb-1 space-x-4">
         <span
           onClick={() => handleTabClick("details")}
           className={`inline-block cursor-pointer text-base font-medium uppercase text-neutral-600 underline-offset-8 ${
@@ -18,14 +18,6 @@ const Detail = ({ productDetail }) => {
           }`}
         >
           details
-        </span>
-        <span
-          onClick={() => handleTabClick("sizeFit")}
-          className={`inline-block cursor-pointer text-base font-medium uppercase text-neutral-600 underline-offset-8 ${
-            activeTab === "sizeFit" ? "underline" : ""
-          }`}
-        >
-          size & Fit
         </span>
         <span
           onClick={() => handleTabClick("deliveryReturns")}
@@ -39,29 +31,72 @@ const Detail = ({ productDetail }) => {
       <hr />
       {/* Content for detail */}
       {activeTab === "details" && (
-        <div>
-          <h1 className="mb-2 mt-6 text-3xl font-bold uppercase">
-            {productDetail.attributes.name}
+        <div className="flex max-w-[768px] flex-col gap-2">
+          <h1 className="mt-6 text-3xl font-bold uppercase">
+            {productDetail?.attributes?.name}
           </h1>
-          <p className="text-base font-normal text-neutral-800">
-            {productDetail.attributes.description}
+          <p className="py-2 text-lg font-normal text-neutral-800">
+            {productDetail?.attributes?.description}
           </p>
-          <ul className="pl-7">
-            <li className="list-disc">Dress</li>
-            <li className="list-disc">Linen</li>
-            <li className="list-disc">Mother-of-pearl buttons</li>
-            <li className="list-disc">Camp collar</li>
-            <li className="list-disc">Short sleeves</li>
-            <li className="list-disc">Chest pocket</li>
-          </ul>
+          <p>
+            <span className="text-lg font-medium">Materials: </span>
+            {productDetail?.attributes?.materials}
+          </p>
+          <p>
+            <span className="text-lg font-medium">Care: </span>
+            {productDetail?.attributes?.care}
+          </p>
+          <p>
+            <span className="text-lg font-medium">Made: </span>
+            {productDetail?.attributes?.made}
+          </p>
         </div>
       )}
 
-      {/* Content for size & fit */}
-      {activeTab === "sizeFit" && <div>sizeFit</div>}
-
       {/* Content for delivery & returns */}
-      {activeTab === "deliveryReturns" && <div>deliveryReturns</div>}
+      {activeTab === "deliveryReturns" && (
+        <div className="mt-3 flex flex-col gap-1">
+          <h4 className="font-bold">Delivery:</h4>
+          <ul className="pl-4">
+            <li className="list-disc">
+              <span className="font-medium">Standard Delivery:</span> Typically
+              arrives within 3-5 business days.
+            </li>
+            <li className="list-disc">
+              <span className="font-medium">Express Delivery:</span> Need it
+              fast? Receive your items within 1-2 business days.
+            </li>
+            <li className="list-disc">
+              <span className="font-medium">International Delivery:</span> We
+              offer worldwide shipping.
+            </li>
+          </ul>
+          <h4 className="font-bold">Returns & Exchanges:</h4>
+          <ul className="pl-4">
+            <li className="list-disc">
+              <span className="font-medium">Return Policy:</span> Hassle-free
+              returns within 30 days of delivery.
+            </li>
+            <li className="list-disc">
+              <span className="font-medium">Refund Policy:</span> Full refunds
+              for unworn, unwashed items with tags attached.
+            </li>
+          </ul>
+          <h4 className="font-bold">Support:</h4>
+          <ul className="pl-4">
+            <li className="list-disc">Free returns for domestic orders.</li>
+            <li className="list-disc">
+              Refunds issued to the original payment method within 3-5 business
+              days.
+            </li>
+          </ul>
+          <h4 className="font-bold">Need Assistance?</h4>
+          <p>
+            Contact us with any questions or concerns regarding delivery or
+            returns. We're here to assist you!
+          </p>
+        </div>
+      )}
     </div>
   );
 };

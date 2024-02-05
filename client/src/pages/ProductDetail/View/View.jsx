@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import { FaPlus } from "react-icons/fa";
-import { FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus } from "react-icons/fa";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
+import { IoStar } from "react-icons/io5";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -57,8 +57,7 @@ const View = ({ productDetail }) => {
   };
 
   return (
-    <div className="container py-12">
-      <div className="mb-6">Women New In</div>
+    <div className="container py-10">
       <div className="flex w-full flex-col gap-7 sm:items-center sm:justify-center xl:flex-row xl:items-start xl:justify-between">
         <div className="flex xl:w-2/3">
           <div className="space-y-3 pl-4 sm:hidden xl:block">
@@ -99,34 +98,53 @@ const View = ({ productDetail }) => {
         </div>
 
         <div className="flex-1">
-          <h1 className="mb-2 font-['Petrona'] text-3xl font-bold uppercase">
-            {productDetail?.attributes?.name}
-          </h1>
-          <p className="text-base font-normal text-[#737373]">
-            {productDetail?.attributes?.description}
-          </p>
-          <p className="my-4 font-['Petrona'] text-lg font-black ">
-            ${productDetail?.attributes?.original_price}
-          </p>
-          <p>
-            Color:
-            <span className="ml-1 font-['Petrona'] text-lg font-bold">
-              {
-                productDetail?.attributes?.product_size_colors?.data[0]
-                  ?.attributes?.color?.data?.attributes?.name
-              }
+          <div className="flex">
+            <h1 className="flex-1 font-['Petrona'] text-3xl font-semibold uppercase">
+              {productDetail?.attributes?.name}
+            </h1>
+            <p className="font-['Petrona'] text-3xl font-bold">
+              ${productDetail?.attributes?.original_price}
+            </p>
+          </div>
+          <div className="group flex cursor-pointer items-center gap-2">
+            <span className="my-2 flex text-sm">
+              <IoStar />
+              <IoStar />
+              <IoStar />
+              <IoStar />
+              <IoStar />
             </span>
+            <Link
+              to=""
+              className="text-[#737373] group-hover:text-black group-hover:underline"
+            >
+              4.6 (95 Reviews)
+            </Link>
+          </div>
+          <p className="text-base font-normal text-[#737373]">
+            {productDetail?.attributes?.title}
           </p>
-          <div className="mt-2 flex gap-2">
-            <Link to="">
-              <div className="h-9 w-9 rounded-full border-[2px] border-[#fff] bg-black shadow-[0_0_0_1px_#4d4d4d]   "></div>
-            </Link>
-            <Link to="">
-              <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-red-700"></div>
-            </Link>
-            <Link to="">
-              <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-blue-700"></div>
-            </Link>
+          <div className="mt-2 flex flex-col gap-2">
+            <p>
+              Color:
+              <span className="ml-1 font-['Petrona'] text-lg font-bold">
+                {
+                  productDetail?.attributes?.product_size_colors?.data[0]
+                    ?.attributes?.color?.data?.attributes?.name
+                }
+              </span>
+            </p>
+            <div className="flex gap-2">
+              <Link to="">
+                <div className="h-9 w-9 rounded-full border-[2px] border-[#fff] bg-black shadow-[0_0_0_1px_#4d4d4d]"></div>
+              </Link>
+              <Link to="">
+                <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-red-700"></div>
+              </Link>
+              <Link to="">
+                <div className="h-9 w-9 rounded-full border-[1px] border-[#e1e0e0] bg-blue-700"></div>
+              </Link>
+            </div>
           </div>
           <p className="relative top-6 mb-3">Size:</p>
           <div className="mb-4">
@@ -218,7 +236,7 @@ const View = ({ productDetail }) => {
             </p>
           </div>
           <div className="flex flex-col">
-            <button className="my-4 border-[1px] border-black bg-black py-2 uppercase text-white">
+            <button className="my-4 border-[1px] border-black  bg-[#262626] py-2 uppercase text-white hover:bg-black">
               Add to bag
             </button>
             <button className="border-[1px] border-black py-2">Wishlist</button>
@@ -232,6 +250,7 @@ const View = ({ productDetail }) => {
           <div className="flex border-b-[1px] border-y-slate-300 py-5">
             <span className="inline-block w-32 text-base font-medium">Fit</span>
             <div>
+              <p>{productDetail?.attributes?.fit}</p>
               <p>Questions about fit?</p>
               <Link to="/" className="underline">
                 <p>Contact Us</p>
