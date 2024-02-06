@@ -278,14 +278,13 @@ const View = ({ productDetail }) => {
                 dispatch(
                   addToCart({
                     id: productDetail?.id,
-                    name: productDetail?.attributes?.name,
+                    name: productDetail?.attributes?.name + " " + selectedColor,
                     price: productDetail?.attributes?.original_price,
-                    img: productDetail?.attributes?.product_size_colors
-                      ?.data?.[0]?.attributes.product_image?.data?.attributes
-                      ?.img_1?.data?.attributes?.url,
-                    selectedSize,
-                    quantity,
-                    selectedColor,
+                    img: productSizeColorNew?.attributes?.product_image?.data
+                      ?.attributes?.img_1?.data?.attributes?.url,
+                    size: selectedSize,
+                    quantity: quantity,
+                    color: selectedColor,
                   }),
                 )
               }

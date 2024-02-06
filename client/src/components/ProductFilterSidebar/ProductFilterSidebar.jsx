@@ -6,7 +6,7 @@ const ProductFilterSidebar = () => {
 
   const [showFilterPrice, setShowFilterPrice] = useState(false);
 
-  const [maxPrice, setMaxPrice] = useState(10000);
+  const [maxPrice, setMaxPrice] = useState(1000);
 
   const [showSortPrice, setShowSortPrice] = useState(false);
 
@@ -119,7 +119,7 @@ const ProductFilterSidebar = () => {
         {showFilterPrice && (
           <div className="mt-1 flex gap-2">
             <span>0</span>
-            <input type="range" min={0} max={10000} onChange={handleMaxPrice} />
+            <input type="range" min={0} max={1000} onChange={handleMaxPrice} />
             <span>{maxPrice}</span>
           </div>
         )}
