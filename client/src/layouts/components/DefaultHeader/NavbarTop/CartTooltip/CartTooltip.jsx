@@ -1,13 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import { removeItem } from "../../../../../redux/cartReducer";
+import { BiTrash } from "react-icons/bi";
 
 const CartTooltip = () => {
   const products = useSelector((state) => state.cart.products);
+  const dispatch = useDispatch();
   console.log(products);
   return (
     <div className="relative">
-      <button className="group relative flex cursor-pointer items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
+      <button className="group relative flex items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
         <span className="hidden text-sm group-hover:block">Order</span>
         <Link to="/cart">
           <TiShoppingCart className="text-xl drop-shadow-sm" />
@@ -15,18 +18,18 @@ const CartTooltip = () => {
         <div className="absolute -top-2 right-1 flex h-5 w-5 items-center justify-center rounded-lg bg-gray-700 text-base font-normal text-white">
           {products.length}
         </div>
-        <div className="absolute left-1/2 top-full mt-3 hidden w-[420px] -translate-x-1/2 transform rounded-lg bg-slate-200 shadow-lg group-hover:block">
-          <div className="absolute -top-3 right-40 h-6 w-6 -translate-x-1/2 rotate-45 transform bg-slate-200"></div>
+        <div className="absolute left-1/2 top-full mt-3 hidden w-[400px] -translate-x-1/2 transform cursor-default rounded-lg bg-slate-200 shadow-lg group-hover:block">
+          <div className="absolute -top-3 right-[150px] h-6 w-6 -translate-x-1/2 rotate-45 transform bg-slate-200"></div>
           <div className="flex flex-col p-1 text-black">
             <h1 className="py-2 pl-4 text-left font-normal text-[#737373]">
               New Products Added
             </h1>
             <div className="flex flex-col">
-              {products.map((item, index) => {
+              {products.map((item) => {
                 return (
                   <div
                     className="flex items-center justify-between gap-4 px-2 py-2"
-                    key={index}
+                    key={item.id}
                   >
                     <div className="flex gap-2">
                       <img
@@ -34,7 +37,7 @@ const CartTooltip = () => {
                         alt=""
                         className="max-h-16 px-2"
                       />
-                      <div className="max-w-60">
+                      <div className="flex max-w-60 flex-col justify-center gap-1">
                         <h2 className="truncate whitespace-nowrap text-sm font-medium">
                           {item.name}
                         </h2>
@@ -43,9 +46,18 @@ const CartTooltip = () => {
                         </p>
                       </div>
                     </div>
-                    <span className="text-left font-semibold text-red-600">
-                      ${item.price}
-                    </span>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <span className="text-left font-semibold text-red-600">
+                        ${item.price}
+                      </span>
+
+                      <span
+                        className="cursor-pointer text-xl"
+                        onClick={() => dispatch(removeItem(item.id))}
+                      >
+                        <BiTrash />
+                      </span>
+                    </div>
                   </div>
                 );
               })}

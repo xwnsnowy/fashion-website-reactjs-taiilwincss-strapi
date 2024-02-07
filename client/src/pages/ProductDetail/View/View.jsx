@@ -277,7 +277,7 @@ const View = ({ productDetail }) => {
               onClick={() =>
                 dispatch(
                   addToCart({
-                    id: productDetail?.id,
+                    id: productDetail?.id + selectedColor + selectedSize,
                     name: productDetail?.attributes?.name + " " + selectedColor,
                     price: productDetail?.attributes?.original_price,
                     img: productSizeColorNew?.attributes?.product_image?.data

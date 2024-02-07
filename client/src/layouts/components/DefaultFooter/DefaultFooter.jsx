@@ -108,7 +108,7 @@ const DefaultFooter = () => {
               <div className="mt-6">
                 <div className="flex items-center gap-3">
                   <FaLocationArrow />
-                  <p>Noida, Uttar Pradesh</p>
+                  <p>Ha Noi, Viet Nam</p>
                 </div>
                 <div className="mt-3 flex items-center gap-3">
                   <FaMobileAlt />
