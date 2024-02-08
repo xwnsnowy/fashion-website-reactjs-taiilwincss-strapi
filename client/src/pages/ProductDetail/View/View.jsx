@@ -222,7 +222,7 @@ const View = ({ productDetail }) => {
             </div>
             <div className="flex space-x-3">
               <span
-                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-300 px-4 py-2 text-center ${
                   selectedSize === "XS" ? "border-black" : ""
                 } ${getQuantitySizeXS() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("XS")}
@@ -230,7 +230,7 @@ const View = ({ productDetail }) => {
                 XS
               </span>
               <span
-                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-300 px-4 py-2 text-center ${
                   selectedSize === "S" ? "border-black" : ""
                 } ${getQuantitySizeS() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("S")}
@@ -238,7 +238,7 @@ const View = ({ productDetail }) => {
                 S
               </span>
               <span
-                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-300 px-4 py-2 text-center ${
                   selectedSize === "M" ? "border-black" : ""
                 } ${getQuantitySizeM() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("M")}
@@ -246,7 +246,7 @@ const View = ({ productDetail }) => {
                 M
               </span>
               <span
-                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-300 px-4 py-2 text-center ${
                   selectedSize === "L" ? "border-black" : ""
                 } ${getQuantitySizeL() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("L")}
@@ -254,7 +254,7 @@ const View = ({ productDetail }) => {
                 L
               </span>
               <span
-                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
+                className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-300 px-4 py-2 text-center ${
                   selectedSize === "XL" ? "border-black" : ""
                 } ${getQuantitySizeXL() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("XL")}
@@ -297,7 +297,7 @@ const View = ({ productDetail }) => {
                 dispatch(
                   addToCart({
                     id: productDetail?.id + selectedColor + selectedSize,
-                    name: productDetail?.attributes?.name + " " + selectedColor,
+                    name: productDetail?.attributes?.name,
                     price: productDetail?.attributes?.original_price,
                     img: productSizeColorNew?.data[0].attributes?.product_image
                       ?.data?.attributes?.img_1?.data?.attributes?.url,

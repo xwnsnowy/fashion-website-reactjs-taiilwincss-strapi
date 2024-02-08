@@ -7,7 +7,6 @@ import { BiTrash } from "react-icons/bi";
 const CartTooltip = () => {
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
-  console.log(products);
   return (
     <div className="relative">
       <button className="group relative flex items-center gap-3 rounded-full border-[1px] border-black bg-gradient-to-r from-white to-white px-4 py-1 text-black">
@@ -38,8 +37,10 @@ const CartTooltip = () => {
                         className="max-h-16 px-2"
                       />
                       <div className="flex max-w-60 flex-col justify-center gap-1">
-                        <h2 className="truncate whitespace-nowrap text-sm font-medium">
+                        <h2 className="truncate text-sm font-medium">
                           {item.name}
+                          &nbsp;
+                          {item.color}
                         </h2>
                         <p className="mt-1 text-left text-sm font-normal">
                           Size {item.size}
