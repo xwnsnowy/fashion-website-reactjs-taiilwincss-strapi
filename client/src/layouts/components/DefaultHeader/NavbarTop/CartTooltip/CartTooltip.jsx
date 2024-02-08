@@ -62,7 +62,7 @@ const CartTooltip = () => {
                 );
               })}
             </div>
-            <div className="px-2 text-right">
+            <div className="px-2 py-1 text-right">
               <Link to="/cart">
                 <button className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
                   View Cart

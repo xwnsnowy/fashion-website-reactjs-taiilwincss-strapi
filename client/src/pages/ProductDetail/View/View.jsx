@@ -13,9 +13,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 const View = ({ productDetail }) => {
   const [productSizeColorNew, setProductSizeColorNew] = useState(
-    productDetail?.attributes?.product_size_colors?.data[0],
+    productDetail?.attributes?.product_size_colors,
   );
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [quantityBySize, setQuantityBySize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
@@ -28,15 +29,33 @@ const View = ({ productDetail }) => {
 
   const dispatch = useDispatch();
 
-  const handleSizeClick = (size) => {
-    setSelectedSize(size);
-  };
-
   const getProductByColor = (color) => {
-    const productColors = productDetail?.attributes?.product_size_colors?.data;
-    return productColors.find(
+    const product = productDetail?.attributes?.product_size_colors?.data;
+    return product.find(
       (item) => item?.attributes?.color?.data?.attributes?.name === color,
     );
+  };
+  console.log(productDetail?.attributes?.product_size_colors);
+
+  const getQuantityBySize = (size) => {
+    const product = productDetail?.attributes?.product_size_colors?.data;
+    const productWithSize = product.find(
+      (item) => item?.attributes?.size?.data?.attributes?.name === size,
+    );
+    return productWithSize?.attributes?.quantity ?? 0;
+  };
+
+  const getQuantitySizeXS = () => getQuantityBySize("XS");
+  const getQuantitySizeS = () => getQuantityBySize("S");
+  const getQuantitySizeM = () => getQuantityBySize("M");
+  const getQuantitySizeL = () => getQuantityBySize("L");
+  const getQuantitySizeXL = () => getQuantityBySize("XL");
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+    const quantityOfSize = getQuantityBySize(size);
+    console.log(quantityOfSize);
+    setQuantityBySize(quantityOfSize);
   };
 
   const handleColorClick = (color) => {
@@ -51,7 +70,7 @@ const View = ({ productDetail }) => {
     const imgIndex = index + 1;
     return (
       import.meta.env.VITE_REACT_UPLOAD_URL +
-      (productSizeColorNew.attributes.product_image?.data?.attributes?.[
+      (productSizeColorNew.data[0].attributes.product_image?.data?.attributes?.[
         `img_${imgIndex}`
       ]?.data?.attributes?.url ?? "")
     );
@@ -154,7 +173,10 @@ const View = ({ productDetail }) => {
             <p>
               Color:
               <span className="ml-1 font-['Petrona'] text-lg font-bold">
-                {productSizeColorNew?.attributes?.color?.data?.attributes?.name}
+                {
+                  productSizeColorNew?.data[0].attributes?.color?.data
+                    ?.attributes?.name
+                }
               </span>
             </p>
             <div className="flex gap-2">
@@ -202,7 +224,7 @@ const View = ({ productDetail }) => {
               <span
                 className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
                   selectedSize === "XS" ? "border-black" : ""
-                }`}
+                } ${getQuantitySizeXS() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("XS")}
               >
                 XS
@@ -210,7 +232,7 @@ const View = ({ productDetail }) => {
               <span
                 className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
                   selectedSize === "S" ? "border-black" : ""
-                }`}
+                } ${getQuantitySizeS() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("S")}
               >
                 S
@@ -218,7 +240,7 @@ const View = ({ productDetail }) => {
               <span
                 className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
                   selectedSize === "M" ? "border-black" : ""
-                }`}
+                } ${getQuantitySizeM() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("M")}
               >
                 M
@@ -226,7 +248,7 @@ const View = ({ productDetail }) => {
               <span
                 className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
                   selectedSize === "L" ? "border-black" : ""
-                }`}
+                } ${getQuantitySizeL() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("L")}
               >
                 L
@@ -234,7 +256,7 @@ const View = ({ productDetail }) => {
               <span
                 className={`inline-block w-1/5 cursor-pointer border-[1px] bg-gray-200 px-4 py-2 text-center ${
                   selectedSize === "XL" ? "border-black" : ""
-                }`}
+                } ${getQuantitySizeXL() === 0 ? "cursor-not-allowed !border-0 !opacity-50" : ""}`}
                 onClick={() => handleSizeClick("XL")}
               >
                 XL
@@ -260,15 +282,12 @@ const View = ({ productDetail }) => {
             >
               <FaPlus />
             </button>
-            <p className="ml-4 flex items-center justify-center gap-1">
-              <span>
-                {
-                  productDetail?.attributes?.product_size_colors?.data[0]
-                    ?.attributes?.quantity
-                }
-              </span>
-              <span>product available</span>
-            </p>
+            {quantityBySize > 0 && (
+              <p className="ml-4 flex items-center justify-center gap-1">
+                <span>{quantityBySize}</span>
+                <span>product available</span>
+              </p>
+            )}
           </div>
           {/* Button Add to bag */}
           <div className="flex flex-col">
@@ -280,8 +299,8 @@ const View = ({ productDetail }) => {
                     id: productDetail?.id + selectedColor + selectedSize,
                     name: productDetail?.attributes?.name + " " + selectedColor,
                     price: productDetail?.attributes?.original_price,
-                    img: productSizeColorNew?.attributes?.product_image?.data
-                      ?.attributes?.img_1?.data?.attributes?.url,
+                    img: productSizeColorNew?.data[0].attributes?.product_image
+                      ?.data?.attributes?.img_1?.data?.attributes?.url,
                     size: selectedSize,
                     quantity: quantity,
                     color: selectedColor,

@@ -823,15 +823,16 @@ export interface ApiColorColor extends Schema.CollectionType {
     singularName: 'color';
     pluralName: 'colors';
     displayName: 'color';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
-    product_size_color: Attribute.Relation<
+    product_size_colors: Attribute.Relation<
       'api::color.color',
-      'oneToOne',
+      'oneToMany',
       'api::product-size-color.product-size-color'
     >;
     createdAt: Attribute.DateTime;
@@ -961,11 +962,6 @@ export interface ApiProductSizeColorProductSizeColor
       'manyToOne',
       'api::product.product'
     >;
-    color: Attribute.Relation<
-      'api::product-size-color.product-size-color',
-      'oneToOne',
-      'api::color.color'
-    >;
     size: Attribute.Relation<
       'api::product-size-color.product-size-color',
       'manyToOne',
@@ -975,6 +971,11 @@ export interface ApiProductSizeColorProductSizeColor
       'api::product-size-color.product-size-color',
       'manyToOne',
       'api::product-image.product-image'
+    >;
+    color: Attribute.Relation<
+      'api::product-size-color.product-size-color',
+      'manyToOne',
+      'api::color.color'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "color",
     "pluralName": "colors",
-    "displayName": "color"
+    "displayName": "color",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,9 +15,9 @@
     "name": {
       "type": "string"
     },
-    "product_size_color": {
+    "product_size_colors": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::product-size-color.product-size-color",
       "mappedBy": "color"
     }

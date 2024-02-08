@@ -21,12 +21,6 @@
       "target": "api::product.product",
       "inversedBy": "product_size_colors"
     },
-    "color": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::color.color",
-      "inversedBy": "product_size_color"
-    },
     "size": {
       "type": "relation",
       "relation": "manyToOne",
@@ -37,6 +31,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::product-image.product-image",
+      "inversedBy": "product_size_colors"
+    },
+    "color": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::color.color",
       "inversedBy": "product_size_colors"
     }
   }
