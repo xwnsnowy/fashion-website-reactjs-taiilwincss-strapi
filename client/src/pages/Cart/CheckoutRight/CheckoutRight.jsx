@@ -4,10 +4,54 @@ import { FaLock, FaMinus, FaPlus } from "react-icons/fa";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Tooltip } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "../../../redux/cartReducer";
+import { useState } from "react";
 
 const CheckoutRight = () => {
+  const [productQuantity, setProductQuantity] = useState({});
+
   const productsInCart = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
+
+  const handleQuantityChange = (productId, newQuantity) => {
+    setProductQuantity({
+      ...productQuantity,
+      [productId]: newQuantity,
+    });
+  };
+
+  const calculateSubTotal = () => {
+    let total = 0;
+    productsInCart.forEach((item) => {
+      const quantity = productQuantity[item.id] || item.quantity;
+      total += quantity * item.price;
+    });
+    return total;
+  };
+
+  const subTotal = calculateSubTotal().toFixed(2);
+
+  const calculateDuties = () => {
+    const dutyRate = 0.1;
+    const duties = subTotal * dutyRate;
+    return duties.toFixed(2);
+  };
+
+  const calculateEstimatedTax = () => {
+    const taxRate = 0.2;
+    const estimatedTax = subTotal * taxRate;
+    return estimatedTax.toFixed(2);
+  };
+
+  const total = () => {
+    const subTotalValue = parseFloat(subTotal);
+    const duties = parseFloat(calculateDuties());
+    const estimatedTax = parseFloat(calculateEstimatedTax());
+    const estimatedShipping = 0;
+    const total = subTotalValue + duties + estimatedShipping + estimatedTax;
+    return total.toFixed(2);
+  };
+
   const text = (
     <span className="flex items-center text-center text-xs">
       Promo codes will only apply if their total discount is greater than the-
@@ -44,13 +88,19 @@ const CheckoutRight = () => {
                 <div className="flex flex-1 flex-col justify-between">
                   <div className="flex justify-between">
                     <div>
-                      <h4>{item.name}</h4>
+                      <div className="flex gap-1">
+                        <h4>{item.name}</h4>
+                        <span className="font-medium">x {item.quantity}</span>
+                      </div>
                       <p className="text-sm text-[#737373]">
                         Size {item.size} | {item.color}
                       </p>
                     </div>
                     <div className="items-cent er flex  cursor-pointer p-1">
-                      <PiTrash className="h-5 w-5" />
+                      <PiTrash
+                        className="h-5 w-5"
+                        onClick={() => dispatch(removeItem(item.id))}
+                      />
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
@@ -61,14 +111,37 @@ const CheckoutRight = () => {
                       </span>
                     </div>
                     <div className="flex">
-                      <button className="flex h-8 w-8 items-center justify-center border-[1px] border-[#e1e0e0] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300">
+                      <button
+                        className="flex h-8 w-8 items-center justify-center border-[1px] border-[#e1e0e0] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
+                        onClick={() =>
+                          handleQuantityChange(
+                            item.id,
+                            (productQuantity[item.id] || item.quantity) - 1,
+                          )
+                        }
+                      >
                         <FaMinus className="text-[#534444]" />
                       </button>
                       <input
                         type="text"
+                        value={productQuantity[item.id] || item.quantity}
+                        onChange={(e) =>
+                          handleQuantityChange(
+                            item.id,
+                            parseInt(e.target.value),
+                          )
+                        }
                         className="h-8 w-10 border-b-[1px] border-t-[1px] border-[#e1e0e0] text-center"
                       />
-                      <button className="flex h-8 w-8 items-center justify-center border-[1px] border-[#e1e0e0] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300">
+                      <button
+                        className="flex h-8 w-8 items-center justify-center border-[1px] border-[#e1e0e0] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
+                        onClick={() =>
+                          handleQuantityChange(
+                            item.id,
+                            (productQuantity[item.id] || item.quantity) + 1,
+                          )
+                        }
+                      >
                         <FaPlus className="text-[#534444]" />
                       </button>
                     </div>
@@ -84,7 +157,7 @@ const CheckoutRight = () => {
                 type="text"
                 placeholder="Gift or promo code"
                 className="w-full border-[1px] bg-[#f5f4f4] px-2 py-3 focus:border-black"
-              />{" "}
+              />
               <Tooltip placement="top" title={text}>
                 <IoIosInformationCircleOutline className="absolute right-0 mr-2 cursor-pointer text-[#737373]" />
               </Tooltip>
@@ -99,15 +172,15 @@ const CheckoutRight = () => {
           <div className="flex flex-col gap-1 py-5">
             <div className="flex justify-between">
               <p>Subtotal</p>
-              <p>₫14681000</p>
+              <p>${calculateSubTotal()}</p>
             </div>
             <div className="flex justify-between">
               <p>Duties</p>
-              <p>₫4,182,645.49</p>
+              <p>${calculateDuties()}</p>
             </div>
             <div className="flex justify-between">
               <p>Estimated Tax</p>
-              <p>₫1,509,126.71</p>
+              <p>${calculateEstimatedTax()}</p>
             </div>
             <div className="flex justify-between">
               <p>Estimated Shipping</p>
@@ -115,7 +188,7 @@ const CheckoutRight = () => {
             </div>
             <div className="flex justify-between">
               <p className="font-semibold">Total</p>
-              <p className="font-semibold">₫20372772</p>
+              <p className="font-semibold">${total()}</p>
             </div>
           </div>
           <div className="bg-[#fff4d6] py-3">

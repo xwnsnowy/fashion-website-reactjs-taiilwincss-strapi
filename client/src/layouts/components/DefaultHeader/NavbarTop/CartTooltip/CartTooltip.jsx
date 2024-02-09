@@ -42,9 +42,14 @@ const CartTooltip = () => {
                           &nbsp;
                           {item.color}
                         </h2>
-                        <p className="mt-1 text-left text-sm font-normal">
-                          Size {item.size}
-                        </p>
+                        <div className="mt-1 flex items-center">
+                          <span className="mr-1 text-base font-medium">
+                            {item.quantity} x
+                          </span>
+                          <span className="text-left text-sm font-normal">
+                            Size {item.size}
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-1">

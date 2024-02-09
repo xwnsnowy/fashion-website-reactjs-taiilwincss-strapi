@@ -44,7 +44,7 @@ const View = ({ productDetail }) => {
     );
     return productWithSize?.attributes?.quantity ?? 0;
   };
-
+  console.log(quantity);
   const getQuantitySizeXS = () => getQuantityBySize("XS");
   const getQuantitySizeS = () => getQuantityBySize("S");
   const getQuantitySizeM = () => getQuantityBySize("M");
