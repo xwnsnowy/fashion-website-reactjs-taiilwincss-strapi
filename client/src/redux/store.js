@@ -14,6 +14,8 @@ import storage from "redux-persist/lib/storage";
 import productReducer from "./productReducer";
 import cartReducer from "./cartReducer";
 
+// const stripe = require("stripe")(import.meta.env.VITE_REACT_STRIPE_KEY);
+
 const persistConfig = {
   key: "root",
   version: 1,

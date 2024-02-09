@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
+import PropTypes from "prop-types";
 
-const ProductFilterSidebar = () => {
+const ProductFilterSidebar = ({ onFilterChange, onSortChange }) => {
   const [showCategory, setShowCategory] = useState(false);
 
   const [showFilterPrice, setShowFilterPrice] = useState(false);
-
-  const [maxPrice, setMaxPrice] = useState(1000);
 
   const [showSortPrice, setShowSortPrice] = useState(false);
 
@@ -24,8 +23,10 @@ const ProductFilterSidebar = () => {
     setShowFilterPrice(!showFilterPrice);
   };
 
+  // Filter by price 0 - 1000
   const handleMaxPrice = (e) => {
-    setMaxPrice(e.target.value);
+    const newPrice = parseInt(e.target.value);
+    onFilterChange(newPrice);
   };
 
   const toggleSortPrice = () => {
@@ -120,7 +121,7 @@ const ProductFilterSidebar = () => {
           <div className="mt-1 flex gap-2">
             <span>0</span>
             <input type="range" min={0} max={1000} onChange={handleMaxPrice} />
-            <span>{maxPrice}</span>
+            <span>1000</span>
           </div>
         )}
       </div>
@@ -207,4 +208,8 @@ const ProductFilterSidebar = () => {
   );
 };
 
+ProductFilterSidebar.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  onSortChange: PropTypes.func.isRequired,
+};
 export default ProductFilterSidebar;

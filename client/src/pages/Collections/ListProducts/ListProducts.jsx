@@ -2,8 +2,22 @@ import PropTypes from "prop-types";
 import useAxios from "../../../hooks/useAxios";
 import ProductFilterSidebar from "../../../components/ProductFilterSidebar";
 import ListProductsView from "../../../components/ListProductsView/ListProductsView";
+import { useState } from "react";
 
 const ListProducts = ({ type }) => {
+  const [filterMaxPrice, setFilters] = useState(1000);
+  const [sortBy, setSortBy] = useState(null);
+
+  console.log(filterMaxPrice);
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
+  const handleSortChange = (sortOption) => {
+    setSortBy(sortOption);
+  };
+
   // eslint-disable-next-line no-undef
   const qs = require("qs");
 
@@ -19,6 +33,8 @@ const ListProducts = ({ type }) => {
     ],
   };
 
+  const query = qs.stringify(queryObject, { encodeValuesOnly: true });
+
   let queryType;
   if (type === "mens-sweaters") {
     queryType = { name: { $eq: "men_sweater" } };
@@ -29,14 +45,19 @@ const ListProducts = ({ type }) => {
 
   const queryFilter = qs.stringify(
     {
-      filters: { sub_category: queryType },
+      filters: {
+        $and: [
+          { sub_category: queryType, original_price: { $lte: filterMaxPrice } },
+        ],
+      },
     },
     { encodeValuesOnly: true },
   );
 
-  const query = qs.stringify(queryObject, { encodeValuesOnly: true });
-
-  const { data, loading, error } = useAxios(`products?${query}&${queryFilter}`);
+  const { data, loading, error } = useAxios(
+    `products?${query}&${queryFilter}`,
+    queryFilter,
+  );
 
   console.log(data);
 
@@ -46,7 +67,10 @@ const ListProducts = ({ type }) => {
   return (
     <div className="container flex gap-8">
       {/* Filter Sidebar */}
-      <ProductFilterSidebar />
+      <ProductFilterSidebar
+        onFilterChange={handleFilterChange}
+        onSortChange={handleSortChange}
+      />
       {/* List Products */}
       <ListProductsView data={data.data} type={type} />
     </div>
