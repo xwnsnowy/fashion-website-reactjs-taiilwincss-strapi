@@ -54,9 +54,17 @@ const ListProducts = ({ type }) => {
     { encodeValuesOnly: true },
   );
 
+  const querySort = sortBy
+    ? qs.stringify(
+        { sort: [`original_price:${sortBy}`] },
+        { encodeValuesOnly: true },
+      )
+    : "";
+
   const { data, loading, error } = useAxios(
-    `products?${query}&${queryFilter}`,
+    `products?${query}&${queryFilter}&${querySort}`,
     queryFilter,
+    querySort,
   );
 
   console.log(data);
@@ -69,6 +77,7 @@ const ListProducts = ({ type }) => {
       {/* Filter Sidebar */}
       <ProductFilterSidebar
         onFilterChange={handleFilterChange}
+        maxPrice={filterMaxPrice}
         onSortChange={handleSortChange}
       />
       {/* List Products */}

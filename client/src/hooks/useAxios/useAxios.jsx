@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const API_ENDPOINT = import.meta.env.VITE_REACT_APP_API_URL;
 const TOKEN = "bearer " + import.meta.env.VITE_REACT_APP_API_TOKEN;
 
-const useAxios = (url, queryFilter, method = "get", body = {}) => {
+const useAxios = (url, queryFilter, querySort, method = "get", body = {}) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -27,7 +27,7 @@ const useAxios = (url, queryFilter, method = "get", body = {}) => {
 
   useEffect(() => {
     fetchData();
-  }, [queryFilter]);
+  }, [queryFilter, querySort]);
 
   return {
     data,

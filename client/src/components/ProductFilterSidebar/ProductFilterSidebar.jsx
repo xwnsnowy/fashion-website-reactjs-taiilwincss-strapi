@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import PropTypes from "prop-types";
 
-const ProductFilterSidebar = ({ onFilterChange, onSortChange }) => {
+const ProductFilterSidebar = ({ onFilterChange, onSortChange, maxPrice }) => {
   const [showCategory, setShowCategory] = useState(false);
 
   const [showFilterPrice, setShowFilterPrice] = useState(false);
@@ -34,11 +34,11 @@ const ProductFilterSidebar = ({ onFilterChange, onSortChange }) => {
   };
 
   const handleSortPriceLowTo = () => {
-    setSort("asc");
+    onSortChange("asc");
   };
 
   const handleSortPriceHighTo = () => {
-    setSort("desc");
+    onSortChange("desc");
   };
 
   const toggleColor = () => {
@@ -121,7 +121,7 @@ const ProductFilterSidebar = ({ onFilterChange, onSortChange }) => {
           <div className="mt-1 flex gap-2">
             <span>0</span>
             <input type="range" min={0} max={1000} onChange={handleMaxPrice} />
-            <span>1000</span>
+            <span>{maxPrice}</span>
           </div>
         )}
       </div>
@@ -145,7 +145,7 @@ const ProductFilterSidebar = ({ onFilterChange, onSortChange }) => {
                 id="asc"
                 value="asc"
                 name="price"
-                onChange={handleSortPriceLowTo}
+                onChange={() => handleSortPriceLowTo()}
               />
               <label htmlFor="asc"> Price (Lowest first)</label>
             </div>
@@ -155,7 +155,7 @@ const ProductFilterSidebar = ({ onFilterChange, onSortChange }) => {
                 id="desc"
                 value="desc"
                 name="price"
-                onChange={handleSortPriceHighTo}
+                onChange={() => handleSortPriceHighTo()}
               />
               <label htmlFor="desc"> Price (Highest first)</label>
             </div>
@@ -211,5 +211,6 @@ const ProductFilterSidebar = ({ onFilterChange, onSortChange }) => {
 ProductFilterSidebar.propTypes = {
   onFilterChange: PropTypes.func.isRequired,
   onSortChange: PropTypes.func.isRequired,
+  maxPrice: PropTypes.number.isRequired,
 };
 export default ProductFilterSidebar;
