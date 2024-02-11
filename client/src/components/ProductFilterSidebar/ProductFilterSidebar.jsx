@@ -2,18 +2,21 @@ import { useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import PropTypes from "prop-types";
 
-const ProductFilterSidebar = ({ onFilterChange, onSortChange, maxPrice }) => {
-  const [showCategory, setShowCategory] = useState(false);
+const ProductFilterSidebar = ({
+  onFilterChange,
+  onSortChange,
+  maxPrice,
+  length,
+}) => {
+  const [showCategory, setShowCategory] = useState(true);
 
-  const [showFilterPrice, setShowFilterPrice] = useState(false);
+  const [showFilterPrice, setShowFilterPrice] = useState(true);
 
-  const [showSortPrice, setShowSortPrice] = useState(false);
+  const [showSortPrice, setShowSortPrice] = useState(true);
 
-  const [sort, setSort] = useState(null);
+  const [showColor, setShowColor] = useState(true);
 
-  const [showColor, setShowColor] = useState(false);
-
-  const [showSize, setShowSize] = useState(false);
+  const [showSize, setShowSize] = useState(true);
 
   const toggleCategory = () => {
     setShowCategory(!showCategory);
@@ -50,7 +53,9 @@ const ProductFilterSidebar = ({ onFilterChange, onSortChange, maxPrice }) => {
   };
   return (
     <div className="w-52 max-w-52">
-      <p className="my-5">43 Products</p>
+      <p className="my-5 text-base tracking-wider">
+        <span className="text-lg font-medium">{length}</span> Products
+      </p>
       <hr />
 
       {/* Category */}
@@ -212,5 +217,6 @@ ProductFilterSidebar.propTypes = {
   onFilterChange: PropTypes.func.isRequired,
   onSortChange: PropTypes.func.isRequired,
   maxPrice: PropTypes.number.isRequired,
+  length: PropTypes.number.isRequired,
 };
 export default ProductFilterSidebar;

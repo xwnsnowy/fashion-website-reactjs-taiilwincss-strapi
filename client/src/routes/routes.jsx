@@ -21,6 +21,10 @@ const publicRoutes = [
     path: routes.womensSweaters,
     component: () => <ListProducts type="womens-sweaters" />,
   },
+  {
+    path: routes.bestSellers,
+    component: () => <ListProducts type="best-sellers" />,
+  },
 ];
 
 const privateRoutes = [];

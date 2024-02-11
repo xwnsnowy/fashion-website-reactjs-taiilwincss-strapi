@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const BannerTop = () => {
   return (
     <section className="my-10 flex items-center justify-center bg-red-900 p-20  text-white">
@@ -8,14 +10,18 @@ const BannerTop = () => {
         </h2>
         <div className="mt-10 flex items-center justify-center gap-5">
           <div className="cursor-pointer">
-            <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white">
-              shop men
-            </span>
+            <Link to="/collections/mens-all-shirts-tops">
+              <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white">
+                shop men
+              </span>
+            </Link>
           </div>
           <div className="cursor-pointer">
-            <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white">
-              shop women
-            </span>
+            <Link to="/collections/womens-all-shirts-tops">
+              <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white">
+                shop women
+              </span>
+            </Link>
           </div>
         </div>
       </div>

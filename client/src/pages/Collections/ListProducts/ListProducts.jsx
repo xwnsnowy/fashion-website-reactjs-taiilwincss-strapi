@@ -76,6 +76,7 @@ const ListProducts = ({ type }) => {
     <div className="container flex gap-8">
       {/* Filter Sidebar */}
       <ProductFilterSidebar
+        length={data.data.length}
         onFilterChange={handleFilterChange}
         maxPrice={filterMaxPrice}
         onSortChange={handleSortChange}

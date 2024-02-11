@@ -60,6 +60,9 @@
     },
     "made": {
       "type": "string"
+    },
+    "number_of_sales": {
+      "type": "integer"
     }
   }
 }

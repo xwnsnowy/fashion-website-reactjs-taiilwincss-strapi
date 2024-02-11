@@ -5,21 +5,26 @@ const NavbarBottom = () => {
   const DropdownMenWear = [
     {
       id: 1,
+      name: "Shop All Men's Clothing",
+      link: "/collections/mens-all-shirts-tops",
+    },
+    {
+      id: 2,
       name: "Tops",
       link: "/",
     },
     {
-      id: 2,
+      id: 3,
       name: "Sweaters",
       link: "/collections/mens-sweaters",
     },
     {
-      id: 3,
+      id: 4,
       name: "Jeans & Denim",
       link: "/",
     },
     {
-      id: 4,
+      id: 5,
       name: "Pants & Bottoms",
       link: "/",
     },
@@ -27,21 +32,26 @@ const NavbarBottom = () => {
   const DropdownWomenWear = [
     {
       id: 1,
+      name: "Shop All Women's Clothing",
+      link: "/collections/mens-all-shirts-tops",
+    },
+    {
+      id: 2,
       name: "Tops",
       link: "/",
     },
     {
-      id: 2,
+      id: 3,
       name: "Sweaters",
       link: "/collections/womens-sweaters",
     },
     {
-      id: 3,
+      id: 4,
       name: "Jeans & Denim",
       link: "/",
     },
     {
-      id: 4,
+      id: 5,
       name: "Pants & Bottoms",
       link: "/",
     },
@@ -55,23 +65,28 @@ const NavbarBottom = () => {
     },
     {
       id: 2,
+      name: "Best-Sellers",
+      link: "/collections/best-sellers",
+    },
+    {
+      id: 3,
       name: "Men Wear",
       link: "/#services",
       children: DropdownMenWear,
     },
     {
-      id: 3,
+      id: 4,
       name: "Women Wear",
       link: "/#",
       children: DropdownWomenWear,
     },
     {
-      id: 4,
+      id: 5,
       name: "About",
       link: "/#",
     },
     {
-      id: 5,
+      id: 6,
       name: "Everworld Stories",
       link: "/#",
     },
@@ -92,7 +107,7 @@ const NavbarBottom = () => {
                     <FaCaretDown className="group-hover:rotate-180" />
                   </span>
                 </Link>
-                <div className="absolute z-[9999] hidden w-[200px] rounded-md bg-white p-2 text-black shadow-md group-hover:block">
+                <div className="absolute z-[9999] hidden w-[230px] rounded-md bg-white p-2 text-black shadow-md group-hover:block">
                   <ul>
                     {data.children.map((childData) => (
                       <li key={childData.id}>
@@ -109,7 +124,7 @@ const NavbarBottom = () => {
               </div>
             ) : (
               <Link
-                to={data.link}  
+                to={data.link}
                 className="inline-block px-4 transition-all duration-200 hover:text-primary"
               >
                 {data.name}

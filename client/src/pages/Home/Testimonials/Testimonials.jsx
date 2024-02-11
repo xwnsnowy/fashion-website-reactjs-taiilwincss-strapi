@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 
-const TestimonialData = [
+const ReviewData = [
   {
     id: 1,
     name: "Victor",
@@ -75,7 +75,7 @@ const Testimonials = () => {
             What our customers are saying
           </p>
           <h1 data-aos="fade-up" className="text-3xl font-bold">
-            Testimonials
+            Review
           </h1>
           <p data-aos="fade-up" className="text-xs text-gray-400">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
@@ -83,16 +83,16 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonial cards */}
+        {/* Review cards */}
         <div data-aos="zoom-in">
           <Slider {...settings}>
-            {TestimonialData.map((data, index) => (
+            {ReviewData.map((data, index) => (
               <div className="my-6" key={index}>
                 <div className="relative mx-4 flex flex-col gap-4 rounded-xl bg-primary/10 px-6 py-8 shadow-lg dark:bg-gray-800">
                   <div className="mb-4">
                     <img
                       src={data.img}
-                      alt=""
+                      alt="ReviewCard"
                       className="h-20 w-20 rounded-full"
                     />
                   </div>

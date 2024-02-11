@@ -2,8 +2,24 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setProductDetail } from "../../redux/productReducer";
+import { FaCaretDown } from "react-icons/fa";
+import { useState } from "react";
 
 const ListProductsView = ({ data, type }) => {
+  const [showFaqFirst, setShowFaqFirst] = useState(false);
+  const [showFaqSecond, setShowFaqSecond] = useState(false);
+  const [showFaqThird, setShowFaqThird] = useState(false);
+
+  const toggleFaqFirst = () => {
+    setShowFaqFirst(!showFaqFirst);
+  };
+  const toggleFaqSecond = () => {
+    setShowFaqSecond(!showFaqSecond);
+  };
+  const toggleFaqThird = () => {
+    setShowFaqThird(!showFaqThird);
+  };
+
   const dispatch = useDispatch();
 
   const handleClickProduct = (product) => {
@@ -75,6 +91,77 @@ const ListProductsView = ({ data, type }) => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-12">
+        <h1 className="text-3xl font-medium">Men's Sweaters FAQs</h1>
+        <div
+          className="cursor-pointer border-[1px] border-b-black py-5"
+          onClick={toggleFaqFirst}
+        >
+          <div className="flex justify-between ">
+            <h4 className="text-lg font-medium">
+              How do you wash and store sweaters for men?
+            </h4>
+            <span>
+              <FaCaretDown
+                className={`cursor-pointer ${showFaqFirst ? "rotate-180" : ""}`}
+              />
+            </span>
+          </div>
+          {showFaqFirst && (
+            <p className="mt-2">
+              To care for sweaters, hand wash or use a delicate cycle in cold
+              water and lay them flat to dry to prevent stretching. Store them
+              in a cool, dry place, preferably folded, to maintain their shape.
+            </p>
+          )}
+        </div>
+        <div
+          className="cursor-pointer border-[1px] border-b-black py-5 "
+          onClick={toggleFaqSecond}
+        >
+          <div className="flex justify-between ">
+            <h4 className="text-lg font-medium">
+              What are the different types of sweaters for men that you carry?
+            </h4>
+            <span>
+              <FaCaretDown
+                className={`cursor-pointer ${showFaqSecond ? "rotate-180" : ""}`}
+              />
+            </span>
+          </div>
+          {showFaqSecond && (
+            <p className="mt-2">
+              We offer a range of sweaters for men, including crewneck sweaters,
+              V-neck sweaters, cashmere sweaters, and cardigans. Each style
+              provides a different look and level of warmth.
+            </p>
+          )}
+        </div>
+        <div
+          className="cursor-pointer border-[1px] border-b-black py-5 "
+          onClick={toggleFaqThird}
+        >
+          <div className="flex justify-between ">
+            <h4 className="text-lg font-medium">
+              What is your lightest weight sweater?
+            </h4>
+            <span>
+              <FaCaretDown
+                className={`cursor-pointer ${showFaqThird ? "rotate-180" : ""}`}
+              />
+            </span>
+          </div>
+          {showFaqThird && (
+            <p className="mt-2">
+              Our lightest weight sweaters are typically made from fine
+              materials like lightweight cotton or cashmere. Options like "The
+              Cotton Cashmere Sweater" or "The Pima Micro-Rib Crew" are known
+              for their comfort and breathability.
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

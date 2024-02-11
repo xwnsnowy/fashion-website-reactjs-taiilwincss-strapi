@@ -918,6 +918,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     description: Attribute.Text;
     fit: Attribute.String;
     made: Attribute.String;
+    number_of_sales: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
