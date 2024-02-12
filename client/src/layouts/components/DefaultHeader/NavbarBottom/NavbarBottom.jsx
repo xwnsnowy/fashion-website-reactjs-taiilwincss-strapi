@@ -5,8 +5,8 @@ const NavbarBottom = () => {
   const DropdownMenWear = [
     {
       id: 1,
-      name: "Shop All Men's Clothing",
-      link: "/collections/mens-all-shirts-tops",
+      name: "All Men's Clothing",
+      link: "/collections/mens-all",
     },
     {
       id: 2,
@@ -32,8 +32,8 @@ const NavbarBottom = () => {
   const DropdownWomenWear = [
     {
       id: 1,
-      name: "Shop All Women's Clothing",
-      link: "/collections/mens-all-shirts-tops",
+      name: "All Women's Clothing",
+      link: "/collections/womens-all",
     },
     {
       id: 2,

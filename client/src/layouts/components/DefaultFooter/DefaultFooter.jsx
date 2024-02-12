@@ -1,5 +1,3 @@
-// import footerLogo from "../../assets/logo.png";
-// import Banner from "../../assets/website/footer-pattern.jpg";
 import {
   FaFacebook,
   FaInstagram,
@@ -8,35 +6,66 @@ import {
   FaMobileAlt,
 } from "react-icons/fa";
 
-// const BannerImg = {
-//   backgroundImage: `url(${Banner})`,
-//   backgroundPosition: "bottom",
-//   backgroundRepeat: "no-repeat",
-//   backgroundSize: "cover",
-//   height: "100%",
-//   width: "100%",
-// };
-
 const DefaultFooter = () => {
-  const FooterLinks = [
+  const childrenForCompany = [
     {
-      title: "Home",
+      id: 1,
+      title: "About",
       link: "/#",
     },
     {
-      title: "About",
-      link: "/#about",
+      id: 2,
+      title: "Environmental Initiatives",
+      link: "/#",
     },
     {
-      title: "Contact",
-      link: "/#contact",
+      id: 3,
+      title: "Factories",
+      link: "/#",
     },
     {
-      title: "Blog",
-      link: "/#blog",
+      id: 4,
+      title: "DEI",
+      link: "/#",
+    },
+    {
+      id: 5,
+      title: "Careers",
+      link: "/#",
+    },
+    {
+      id: 6,
+      title: "International",
+      link: "/#",
+    },
+    {
+      id: 7,
+      title: "Accessibility",
+      link: "/#",
     },
   ];
-
+  const childrenForGetHelp = [
+    {
+      id: 1,
+      title: "Help Center",
+      link: "/#",
+    },
+    {
+      id: 2,
+      title: "Return Policy",
+      link: "/#",
+    },
+    {
+      id: 3,
+      title: "Shipping Info",
+      link: "/#",
+    },
+    {
+      id: 4,
+      title: "Bulk Orders",
+      link: "/#",
+    },
+  ];
   return (
     <div className="text-black">
       <div className="container">
@@ -59,12 +88,12 @@ const DefaultFooter = () => {
             <div>
               <div className="px-4 py-8">
                 <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Important Links
+                  Company
                 </h1>
                 <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
+                  {childrenForCompany.map((link) => (
                     <li
-                      className="cursor-pointer text-gray-200 duration-300 hover:translate-x-1 hover:text-primary"
+                      className="cursor-pointer text-black duration-300 hover:translate-x-1 hover:text-primary"
                       key={link.title}
                     >
                       <span>{link.title}</span>
@@ -76,12 +105,12 @@ const DefaultFooter = () => {
             <div>
               <div className="px-4 py-8">
                 <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Links
+                  Get Help
                 </h1>
                 <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
+                  {childrenForGetHelp.map((link) => (
                     <li
-                      className="cursor-pointer text-gray-200 duration-300 hover:translate-x-1 hover:text-primary"
+                      className="cursor-pointer text-black duration-300 hover:translate-x-1 hover:text-primary"
                       key={link.title}
                     >
                       <span>{link.title}</span>

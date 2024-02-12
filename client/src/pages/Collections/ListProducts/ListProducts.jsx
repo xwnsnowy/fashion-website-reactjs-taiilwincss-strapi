@@ -42,6 +42,12 @@ const ListProducts = ({ type }) => {
   if (type === "womens-sweaters") {
     queryType = { name: { $eq: "women_sweater" } };
   }
+  if (type === "mens-all") {
+    queryType = { name: { $notContains: "women" } };
+  }
+  if (type === "womens-all") {
+    queryType = { name: { $contains: "women" } };
+  }
 
   const queryFilter = qs.stringify(
     {

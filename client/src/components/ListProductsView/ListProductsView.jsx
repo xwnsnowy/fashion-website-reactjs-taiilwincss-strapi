@@ -29,6 +29,9 @@ const ListProductsView = ({ data, type }) => {
   const titleMap = {
     "mens-sweaters": "Mens Sweaters - Cashmere, Cardigans & Crewnecks",
     "womens-sweaters": "Women’s Sweaters & Cardigans",
+    "mens-all": "Shop All Men's Clothing & Apparel",
+    "womens-all": "Shop All Women's Clothing & Apparel",
+    "best-sellers": "Best Selling Clothing & Apparel",
   };
 
   const title = titleMap[type] || "Other Title";
@@ -72,7 +75,10 @@ const ListProductsView = ({ data, type }) => {
             </div>
 
             <div className="flex justify-between">
-              <Link to="/product-detail">
+              <Link
+                to={`/products/${normalizedName(item?.attributes.name)}?collection=${type}`}
+                onClick={() => handleClickProduct(item)}
+              >
                 <h4 className="mb-1 mt-2 text-base font-semibold text-[#262626]">
                   {item?.attributes.name}
                 </h4>

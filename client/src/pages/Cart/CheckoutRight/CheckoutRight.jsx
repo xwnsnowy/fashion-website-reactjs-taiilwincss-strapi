@@ -63,7 +63,7 @@ const CheckoutRight = () => {
     <div className="sticky top-16 max-h-[900px] flex-1 overflow-y-auto bg-white">
       <div className="flex flex-col">
         <div className="flex items-center justify-center bg-[#ebf9eb] py-1">
-          <p className="text-sm">Free Shipping</p>
+          <p className="text-base">Free Shipping</p>
         </div>
         <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-6">
           <div className="flex items-center gap-2">
@@ -73,7 +73,7 @@ const CheckoutRight = () => {
             </span>
             <div className="h-[10px] w-[10px] rounded-full bg-[#297a3a]"></div>
           </div>
-          <p>₫2,871,977.81</p>
+          <p>${total()}</p>
         </div>
         <div className=" flex flex-col gap-4 px-6 py-4">
           {/* product in purschasing */}
@@ -190,6 +190,21 @@ const CheckoutRight = () => {
               <p className="font-semibold">Total</p>
               <p className="font-semibold">${total()}</p>
             </div>
+          </div>
+          {/* check */}
+          <div className="flex items-center gap-2">
+            <div className="px-2">
+              <input
+                type="checkbox"
+                name="check"
+                id="check"
+                className="h-4 w-4"
+              />
+            </div>
+            <label htmlFor="check" className="text-sm">
+              I'd also like to receive text notifications to get early access on
+              product launches, exclusive offers, and more
+            </label>
           </div>
           <div className="bg-[#fff4d6] py-3">
             <p className="flex items-center justify-center text-center text-sm">

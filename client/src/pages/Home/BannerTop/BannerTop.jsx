@@ -10,14 +10,14 @@ const BannerTop = () => {
         </h2>
         <div className="mt-10 flex items-center justify-center gap-5">
           <div className="cursor-pointer">
-            <Link to="/collections/mens-all-shirts-tops">
+            <Link to="/collections/mens-all">
               <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white">
                 shop men
               </span>
             </Link>
           </div>
           <div className="cursor-pointer">
-            <Link to="/collections/womens-all-shirts-tops">
+            <Link to="/collections/womens-all">
               <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white">
                 shop women
               </span>

@@ -1,7 +1,17 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setProductDetail } from "../../../redux/productReducer";
 
 const NewIn = ({ fourNewProducts }) => {
+  const dispatch = useDispatch();
+
+  const handleClickProduct = (product) => {
+    dispatch(setProductDetail(product));
+  };
+
+  const normalizedName = (input) => input.toLowerCase().replace(/\s+/g, "-");
+
   return (
     <section className="my-14">
       <div className="container">
@@ -43,7 +53,10 @@ text-black"
                 key={item.id}
                 className="flex flex-col items-center justify-center bg-white"
               >
-                <Link to="/">
+                <Link
+                  to={`/products/${normalizedName(item?.attributes.name)}`}
+                  onClick={() => handleClickProduct(item)}
+                >
                   <img
                     src={
                       import.meta.env.VITE_REACT_UPLOAD_URL +
@@ -52,10 +65,10 @@ text-black"
                         ?.attributes?.url
                     }
                     alt=""
-                    className="h-[220px] w-[180px] transform rounded-md object-cover p-4 transition duration-300 ease-in-out hover:scale-105"
+                    className="h-[220px] w-[180px] transform rounded-md object-cover p-4 shadow-xl transition duration-300 ease-in-out hover:scale-105"
                   />
                 </Link>
-                <div className="min-h-16">
+                <div className="mt-2 min-h-16">
                   <Link to="/">
                     <h3 className="transform pb-3 text-center font-semibold uppercase transition duration-300 ease-in-out hover:scale-105 hover:text-blue-500">
                       {item?.attributes?.name}

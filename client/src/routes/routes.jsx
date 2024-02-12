@@ -14,6 +14,14 @@ const publicRoutes = [
   { path: routes.everworldStories, component: EverworldStories },
   { path: routes.cart, component: Cart, Layout: CartLayout },
   {
+    path: routes.mensAll,
+    component: () => <ListProducts type="mens-all" />,
+  },
+  {
+    path: routes.womensAll,
+    component: () => <ListProducts type="womens-all" />,
+  },
+  {
     path: routes.mensSweaters,
     component: () => <ListProducts type="mens-sweaters" />,
   },
