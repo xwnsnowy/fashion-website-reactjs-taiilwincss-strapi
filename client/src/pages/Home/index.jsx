@@ -1,5 +1,5 @@
-import Banner from "./Banner/Banner";
 import BannerTop from "./BannerTop";
+import BannerBottom from "./BannerBottom";
 import Hero from "./Hero";
 import NewIn from "./NewIn";
 import Review from "./Review";
@@ -49,7 +49,7 @@ const Home = () => {
       <Hero />
       <NewIn fourNewProducts={data.data} />
       <TopProducts />
-      <Banner />
+      <BannerBottom />
       <Review />
     </>
   );

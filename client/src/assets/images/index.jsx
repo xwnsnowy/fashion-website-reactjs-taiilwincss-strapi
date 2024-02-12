@@ -8,6 +8,7 @@ import shirt1 from "./products/shirts/shirt-1.png";
 import shirt2 from "./products/shirts/shirt-2.png";
 import shirt3 from "./products/shirts/shirt-3.png";
 import freeship from "./cart/free-ship.png";
+import bannerBottomSale from "./sale/banner-bottom-sale.avif";
 
 const images = {
   moon: moon,
@@ -20,6 +21,7 @@ const images = {
   shirt2: shirt2,
   shirt3: shirt3,
   freeship: freeship,
+  bannerBottomSale: bannerBottomSale,
 };
 
 export default images;
