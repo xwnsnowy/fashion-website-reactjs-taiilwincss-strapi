@@ -69,7 +69,7 @@ const DefaultFooter = () => {
   return (
     <div className="text-black">
       <div className="container">
-        <div data-aos="zoom-in" className="grid pb-44 pt-5 md:grid-cols-3">
+        <div data-aos="zoom-in" className="grid pb-10 pt-5 md:grid-cols-3">
           {/* company details */}
           <div className="px-4 py-8">
             <h1 className="mb-3 flex items-center gap-3 text-justify text-xl font-bold sm:text-left sm:text-3xl">

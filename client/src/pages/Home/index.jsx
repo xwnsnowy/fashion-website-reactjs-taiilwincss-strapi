@@ -2,7 +2,7 @@ import Banner from "./Banner/Banner";
 import BannerTop from "./BannerTop";
 import Hero from "./Hero";
 import NewIn from "./NewIn";
-import Testimonials from "./Testimonials";
+import Review from "./Review";
 import TopProducts from "./TopProducts";
 import useAxios from "../../hooks/useAxios";
 
@@ -50,7 +50,7 @@ const Home = () => {
       <NewIn fourNewProducts={data.data} />
       <TopProducts />
       <Banner />
-      <Testimonials />
+      <Review />
     </>
   );
 };
