@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -12,9 +12,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const View = ({ productDetail }) => {
-  const [productSizeColorNew, setProductSizeColorNew] = useState(
+  console.log(productDetail);
+  const [listProductSizeColorNew, setListProductSizeColorNew] = useState(
     productDetail?.attributes?.product_size_colors,
   );
+  console.log(listProductSizeColorNew);
+  const [imagesArray, setImagesArray] = useState([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantityBySize, setQuantityBySize] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -29,22 +32,33 @@ const View = ({ productDetail }) => {
 
   const dispatch = useDispatch();
 
-  const getProductByColor = (color) => {
-    const product = productDetail?.attributes?.product_size_colors?.data;
-    return product.find(
-      (item) => item?.attributes?.color?.data?.attributes?.name === color,
-    );
-  };
-  console.log(productDetail?.attributes?.product_size_colors);
+  useEffect(() => {
+    const updatedImagesArray = Array.from({ length: 4 }, (_, index) => {
+      const imgIndex = index + 1;
+      return (
+        import.meta.env.VITE_REACT_UPLOAD_URL +
+        (Array.isArray(listProductSizeColorNew)
+          ? listProductSizeColorNew[0]?.attributes?.product_image?.data
+              ?.attributes?.[`img_${imgIndex}`]?.data?.attributes?.url ?? ""
+          : listProductSizeColorNew?.data?.[0]?.attributes?.product_image?.data
+              ?.attributes?.[`img_${imgIndex}`]?.data?.attributes?.url ?? "")
+      );
+    });
+    setImagesArray(updatedImagesArray);
+  }, [listProductSizeColorNew]);
 
   const getQuantityBySize = (size) => {
-    const product = productDetail?.attributes?.product_size_colors?.data;
+    let product = Array.isArray(listProductSizeColorNew)
+      ? listProductSizeColorNew
+      : listProductSizeColorNew?.data;
+
     const productWithSize = product.find(
       (item) => item?.attributes?.size?.data?.attributes?.name === size,
     );
+
     return productWithSize?.attributes?.quantity ?? 0;
   };
-  console.log(quantity);
+
   const getQuantitySizeXS = () => getQuantityBySize("XS");
   const getQuantitySizeS = () => getQuantityBySize("S");
   const getQuantitySizeM = () => getQuantityBySize("M");
@@ -58,23 +72,22 @@ const View = ({ productDetail }) => {
     setQuantityBySize(quantityOfSize);
   };
 
+  const getProductByColor = (color) => {
+    const product = productDetail?.attributes?.product_size_colors?.data;
+    const productWithColor = product.filter(
+      (item) => item?.attributes?.color?.data?.attributes?.name === color,
+    );
+    return productWithColor;
+  };
+
   const handleColorClick = (color) => {
     setSelectedColor(color);
-    const newProduct = getProductByColor(color);
-    setProductSizeColorNew(newProduct);
+    const listProductNew = getProductByColor(color);
+    console.log(listProductNew);
+    setListProductSizeColorNew(listProductNew);
   };
 
   const sliderRef = useRef(null);
-
-  const imagesArray = Array.from({ length: 4 }, (_, index) => {
-    const imgIndex = index + 1;
-    return (
-      import.meta.env.VITE_REACT_UPLOAD_URL +
-      (productSizeColorNew.data[0].attributes.product_image?.data?.attributes?.[
-        `img_${imgIndex}`
-      ]?.data?.attributes?.url ?? "")
-    );
-  });
 
   const settings = {
     dots: false,
@@ -173,10 +186,7 @@ const View = ({ productDetail }) => {
             <p>
               Color:
               <span className="ml-1 font-['Petrona'] text-lg font-bold">
-                {
-                  productSizeColorNew?.data[0].attributes?.color?.data
-                    ?.attributes?.name
-                }
+                {selectedColor}
               </span>
             </p>
             <div className="flex gap-2">
@@ -299,8 +309,12 @@ const View = ({ productDetail }) => {
                     id: productDetail?.id + selectedColor + selectedSize,
                     name: productDetail?.attributes?.name,
                     price: productDetail?.attributes?.original_price,
-                    img: productSizeColorNew?.data[0].attributes?.product_image
-                      ?.data?.attributes?.img_1?.data?.attributes?.url,
+                    img: Array.isArray(listProductSizeColorNew)
+                      ? listProductSizeColorNew[0].attributes?.product_image
+                          ?.data?.attributes?.img_1?.data?.attributes?.url
+                      : listProductSizeColorNew?.data[0]?.attributes
+                          ?.product_image?.data?.attributes?.img_1?.data
+                          ?.attributes?.url,
                     size: selectedSize,
                     quantity: quantity,
                     color: selectedColor,

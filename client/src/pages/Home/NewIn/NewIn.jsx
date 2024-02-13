@@ -42,7 +42,12 @@ text-black"
                 </div>
               </div>
               <div className="inline-flex cursor-pointer items-center justify-center bg-neutral-800 px-3.5 py-2 hover:bg-neutral-950">
-                <a className="text-xs font-normal text-white ">Shop New In</a>
+                <Link
+                  to="/collections/new-in"
+                  className="text-xs font-normal text-white "
+                >
+                  Shop New In
+                </Link>
               </div>
             </div>
             {/* card section */}
