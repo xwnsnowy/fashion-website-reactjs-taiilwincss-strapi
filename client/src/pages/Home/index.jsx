@@ -44,14 +44,14 @@ const Home = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <>
+    <div className="dark:bg-[#000F0A] ">
       <BannerTop />
       <Hero />
       <NewIn fourNewProducts={data.data} />
       <TopProducts />
       <BannerBottom />
       <Review />
-    </>
+    </div>
   );
 };
 

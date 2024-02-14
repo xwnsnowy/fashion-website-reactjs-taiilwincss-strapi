@@ -92,47 +92,49 @@ const NavbarBottom = () => {
     },
   ];
   return (
-    <div className="container flex items-center justify-center py-2">
-      <ul className="relative hidden cursor-pointer items-center gap-4 sm:flex">
-        {Menu.map((data) => (
-          <li key={data.id}>
-            {data.children ? (
-              <div className="group relative cursor-pointer">
+    <div className="dark:bg-[#18191a] dark:text-white">
+      <div className="container flex items-center justify-center py-2 ">
+        <ul className="relative hidden cursor-pointer items-center gap-4 sm:flex ">
+          {Menu.map((data) => (
+            <li key={data.id}>
+              {data.children ? (
+                <div className="group relative cursor-pointer">
+                  <Link
+                    to=""
+                    className="flex items-center gap-2 py-2 transition-all duration-200"
+                  >
+                    {data.name}
+                    <span>
+                      <FaCaretDown className="group-hover:rotate-180" />
+                    </span>
+                  </Link>
+                  <div className="absolute z-[9999] hidden w-[230px] rounded-md bg-white p-2 text-black shadow-md group-hover:block">
+                    <ul>
+                      {data.children.map((childData) => (
+                        <li key={childData.id}>
+                          <Link
+                            to={childData.link}
+                            className="inline-block w-full rounded-md p-2 hover:bg-primary/20"
+                          >
+                            {childData.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : (
                 <Link
-                  to=""
-                  className="flex items-center gap-2 py-2 transition-all duration-200"
+                  to={data.link}
+                  className="inline-block px-4 transition-all duration-200 hover:text-primary"
                 >
                   {data.name}
-                  <span>
-                    <FaCaretDown className="group-hover:rotate-180" />
-                  </span>
                 </Link>
-                <div className="absolute z-[9999] hidden w-[230px] rounded-md bg-white p-2 text-black shadow-md group-hover:block">
-                  <ul>
-                    {data.children.map((childData) => (
-                      <li key={childData.id}>
-                        <Link
-                          to={childData.link}
-                          className="inline-block w-full rounded-md p-2 hover:bg-primary/20"
-                        >
-                          {childData.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ) : (
-              <Link
-                to={data.link}
-                className="inline-block px-4 transition-all duration-200 hover:text-primary"
-              >
-                {data.name}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

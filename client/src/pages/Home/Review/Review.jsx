@@ -67,17 +67,20 @@ const Review = () => {
   };
 
   return (
-    <div className="mb-10 py-10">
-      <div className="container">
+    <div className="py-10 ">
+      <div className="container rounded-3xl dark:bg-[#18191a]">
         {/* header section */}
-        <div className="mx-auto mb-10 flex max-w-[600px] flex-col gap-1 text-center">
+        <div className="mx-auto flex max-w-[600px] flex-col gap-1 py-10 text-center ">
           <p data-aos="fade-up" className="text-sm text-primary">
             See what our customers are saying
           </p>
-          <h1 data-aos="fade-up" className="text-3xl font-bold">
+          <h1 data-aos="fade-up" className="text-3xl font-bold dark:text-white">
             Reviews
           </h1>
-          <p data-aos="fade-up" className="text-sm text-gray-700">
+          <p
+            data-aos="fade-up"
+            className="text-sm text-gray-700 dark:text-gray-400"
+          >
             Discover what customers think about our latest fashion collections
             and shopping experience. Here's what they have to say:
           </p>

@@ -7,7 +7,7 @@ const DefaultHeader = () => {
     <header className="webkit-sticky sticky left-0 top-0 z-40 w-full bg-white  text-black shadow-xl duration-200">
       <RotatingBanner />
       <NavbarTop />
-      <hr />
+      <hr className="dark:hidden" />
       <NavbarBottom />
     </header>
   );

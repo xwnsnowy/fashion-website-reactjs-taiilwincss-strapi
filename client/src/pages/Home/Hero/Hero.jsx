@@ -35,7 +35,7 @@ const Hero = () => {
 
   return (
     <div className="relative flex max-h-[88vh] items-center justify-center overflow-hidden bg-gray-100 duration-200 dark:bg-gray-950 dark:text-white xl:min-h-[800px] ">
-      <div className="w-full pb-8 sm:pb-0">
+      <div className="w-full pb-8 sm:pb-0 ">
         <Slider {...settings}>
           {ImageList.map((data) => (
             <div key={data.id} className="outline-none focus:outline-none">

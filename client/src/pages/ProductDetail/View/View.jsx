@@ -44,10 +44,16 @@ const View = ({ productDetail }) => {
               ?.attributes?.[`img_${imgIndex}`]?.data?.attributes?.url ?? "")
       );
     });
-    setListProductSizeColorNew(productDetail?.attributes?.product_size_colors);
-    setSelectedColor(colorProduct);
     setImagesArray(updatedImagesArray);
-  }, [listProductSizeColorNew, colorProduct, productDetail]);
+  }, [listProductSizeColorNew]);
+
+  useEffect(() => {
+    setSelectedColor(colorProduct);
+  }, [colorProduct]);
+
+  useEffect(() => {
+    setListProductSizeColorNew(productDetail?.attributes?.product_size_colors);
+  }, [productDetail]);
 
   const getQuantityBySize = (size) => {
     let product = Array.isArray(listProductSizeColorNew)
@@ -85,7 +91,6 @@ const View = ({ productDetail }) => {
   const handleColorClick = (color) => {
     setSelectedColor(color);
     const listProductNew = getProductByColor(color);
-    console.log(listProductNew);
     setListProductSizeColorNew(listProductNew);
   };
 

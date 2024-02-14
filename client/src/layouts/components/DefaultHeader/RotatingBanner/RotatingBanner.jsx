@@ -30,7 +30,7 @@ const RotatingBanner = () => {
     <div
       className={`py-2 ${currentColorClass} transition-all duration-1000 ease-in`}
     >
-      <div className="container flex items-center justify-center gap-3 pr-28 text-white">
+      <div className="container flex items-center justify-center gap-3 text-white">
         <span className="text-[14px]">{currentText}</span>
         <Link to="/" className="text-base underline">
           Shop Now

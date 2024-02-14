@@ -26,19 +26,19 @@ const ProductsData = [
 ];
 const TopProducts = () => {
   return (
-    <section className="my-14">
-      <div className="container flex flex-col">
+    <section className="py-12">
+      <div className="container flex flex-col rounded-3xl dark:bg-[#18191a]">
         {/* Header section */}
-        <div className="mx-auto mb-10 max-w-[600px] text-center ">
+        <div className="mx-auto max-w-[600px] py-12 text-center ">
           <h1
             data-aos="fade-up"
-            className="font-['Kaisei-Tokumin'] text-3xl font-extrabold uppercase text-black"
+            className="font-['Kaisei-Tokumin'] text-3xl font-extrabold uppercase text-black dark:text-white"
           >
             top seller
           </h1>
           <p
             data-aos="fade-up"
-            className="text-md font-semibold text-neutral-800"
+            className="text-md font-semibold text-neutral-800 dark:text-neutral-400"
           >
             Be inspired by sleek shapes, fresh colors and expressive prints
           </p>

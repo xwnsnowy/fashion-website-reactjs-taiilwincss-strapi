@@ -6,7 +6,7 @@ import CartTooltip from "./CartTooltip";
 
 const NavbarTop = () => {
   return (
-    <div className="h-full w-full bg-white py-6 dark:bg-slate-600 ">
+    <div className="h-full w-full bg-white py-6 dark:bg-[#18191a]  ">
       <div className="container flex items-center justify-between border-b-violet-300">
         <div className="group flex items-center justify-center gap-2">
           <img src={images.usa} alt="USA" className="w-8 cursor-pointer" />

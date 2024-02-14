@@ -67,7 +67,7 @@ const DefaultFooter = () => {
     },
   ];
   return (
-    <div className="text-black">
+    <div className="text-black dark:bg-[#18191a]">
       <div className="container">
         <div data-aos="zoom-in" className="grid pb-10 pt-5 md:grid-cols-3">
           {/* company details */}
@@ -87,13 +87,13 @@ const DefaultFooter = () => {
           <div className="col-span-2 grid grid-cols-2 sm:grid-cols-3 md:pl-10">
             <div>
               <div className="px-4 py-8">
-                <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
+                <h1 className="mb-3 text-justify text-xl font-bold dark:text-white sm:text-left  sm:text-xl">
                   Company
                 </h1>
                 <ul className="flex flex-col gap-3">
                   {childrenForCompany.map((link) => (
                     <li
-                      className="cursor-pointer text-black duration-300 hover:translate-x-1 hover:text-primary"
+                      className="cursor-pointer text-black duration-300 hover:translate-x-1 hover:text-primary dark:text-neutral-500"
                       key={link.title}
                     >
                       <span>{link.title}</span>
@@ -104,13 +104,13 @@ const DefaultFooter = () => {
             </div>
             <div>
               <div className="px-4 py-8">
-                <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
+                <h1 className="mb-3 text-justify text-xl font-bold dark:text-white sm:text-left sm:text-xl">
                   Get Help
                 </h1>
                 <ul className="flex flex-col gap-3">
                   {childrenForGetHelp.map((link) => (
                     <li
-                      className="cursor-pointer text-black duration-300 hover:translate-x-1 hover:text-primary"
+                      className="cursor-pointer text-black duration-300 hover:translate-x-1 hover:text-primary dark:text-neutral-500"
                       key={link.title}
                     >
                       <span>{link.title}</span>
@@ -125,21 +125,21 @@ const DefaultFooter = () => {
             <div>
               <div className="mt-6 flex items-center gap-3">
                 <a href="#">
-                  <FaInstagram className="text-3xl" />
+                  <FaInstagram className="text-3xl dark:text-neutral-500" />
                 </a>
                 <a href="#">
-                  <FaFacebook className="text-3xl" />
+                  <FaFacebook className="text-3xl dark:text-neutral-500" />
                 </a>
                 <a href="#">
-                  <FaLinkedin className="text-3xl" />
+                  <FaLinkedin className="text-3xl dark:text-neutral-500" />
                 </a>
               </div>
               <div className="mt-6">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 dark:text-neutral-500">
                   <FaLocationArrow />
                   <p>Ha Noi, Viet Nam</p>
                 </div>
-                <div className="mt-3 flex items-center gap-3">
+                <div className="mt-3 flex items-center gap-3 dark:text-neutral-500">
                   <FaMobileAlt />
                   <p>+91 123456789</p>
                 </div>
