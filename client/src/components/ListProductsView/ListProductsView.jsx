@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setProductDetail } from "../../redux/productReducer";
+import { setProductDetail, setListProduct } from "../../redux/productReducer";
 import { FaCaretDown } from "react-icons/fa";
 import { useState } from "react";
 
@@ -24,6 +24,7 @@ const ListProductsView = ({ data, type }) => {
 
   const handleClickProduct = (productDetail) => {
     dispatch(setProductDetail(productDetail));
+    dispatch(setListProduct(data));
   };
 
   const titleMap = {
