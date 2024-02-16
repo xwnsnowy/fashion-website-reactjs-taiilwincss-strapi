@@ -37,7 +37,7 @@ text-black dark:text-white"
                 <div className="text-4xl font-medium tracking-wide text-white ">
                   New In
                 </div>
-                <div className=" text-xs font-normal text-black opacity-90 dark:text-neutral-300 ">
+                <div className=" text-xs font-normal text-neutral-200 opacity-90 ">
                   Shop the latest fashion trends from the top luxury designers.
                 </div>
               </div>

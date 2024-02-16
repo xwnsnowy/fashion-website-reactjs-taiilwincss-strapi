@@ -6,6 +6,8 @@ const routes = {
   womensAll: "/collections/womens-all",
   mensAllShirtsTops: "/collections/mens-all-shirts-tops",
   womensAllShirtsTops: "/collections/womens-all-shirts-tops",
+  mensJeans: "/collections/mens-Jeans",
+  womensJeans: "/collections/womens-Jeans",
   mensSweaters: "/collections/mens-sweaters",
   womensSweaters: "/collections/womens-sweaters",
   bestSellers: "/collections/best-sellers",

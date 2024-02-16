@@ -21,7 +21,7 @@ const NavbarBottom = () => {
     {
       id: 4,
       name: "Jeans & Denim",
-      link: "/",
+      link: "/collections/mens-jeans",
     },
     {
       id: 5,
@@ -48,7 +48,7 @@ const NavbarBottom = () => {
     {
       id: 4,
       name: "Jeans & Denim",
-      link: "/",
+      link: "/collections/womens-jeans",
     },
     {
       id: 5,

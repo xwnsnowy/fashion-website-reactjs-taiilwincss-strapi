@@ -30,6 +30,10 @@ const publicRoutes = [
     component: () => <ListProducts type="womens-all-shirts-tops" />,
   },
   {
+    path: routes.mensJeans,
+    component: () => <ListProducts type="mens-jeans" />,
+  },
+  {
     path: routes.mensSweaters,
     component: () => <ListProducts type="mens-sweaters" />,
   },

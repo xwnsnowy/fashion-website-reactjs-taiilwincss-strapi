@@ -49,6 +49,12 @@ const ListProducts = ({ type }) => {
   }
   if (type === "womens-all-shirts-tops") {
     queryType = { name: { $eq: "womens_all_shirts_tops" } };
+  } // all shirts tops
+  if (type === "mens-jeans") {
+    queryType = { name: { $eq: "mens_jeans" } };
+  }
+  if (type === "womens-jeans") {
+    queryType = { name: { $eq: "womens_jeans" } };
   }
   // all clothes
   if (type === "mens-all") {
@@ -80,10 +86,16 @@ const ListProducts = ({ type }) => {
 
   if (type === "new-in") {
     queryOtherType = qs.stringify(
-      { sort: ["id:desc"] },
+      {
+        sort: ["id:desc"],
+        pagination: {
+          limit: 10,
+        },
+      },
       { encodeValuesOnly: true },
     );
   }
+
   if (type === "best-sellers") {
     queryOtherType = qs.stringify(
       {
@@ -91,6 +103,9 @@ const ListProducts = ({ type }) => {
           number_of_sales: { $gt: 0 },
         },
         sort: ["number_of_sales:desc"],
+        pagination: {
+          limit: 10,
+        },
       },
       { encodeValuesOnly: true },
     );
