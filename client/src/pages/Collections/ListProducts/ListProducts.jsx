@@ -76,8 +76,28 @@ const ListProducts = ({ type }) => {
       )
     : "";
 
+  let queryOtherType;
+
+  if (type === "new-in") {
+    queryOtherType = qs.stringify(
+      { sort: ["id:desc"] },
+      { encodeValuesOnly: true },
+    );
+  }
+  if (type === "best-sellers") {
+    queryOtherType = qs.stringify(
+      {
+        filters: {
+          number_of_sales: { $gt: 0 },
+        },
+        sort: ["number_of_sales:desc"],
+      },
+      { encodeValuesOnly: true },
+    );
+  }
+
   const { data, loading, error } = useAxios(
-    `products?${query}&${queryFilter}&${querySort}`,
+    `products?${query}&${queryFilter}&${querySort}&${queryOtherType}`,
     queryFilter,
     querySort,
   );

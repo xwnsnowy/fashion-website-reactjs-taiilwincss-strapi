@@ -62,7 +62,8 @@
       "type": "string"
     },
     "number_of_sales": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     }
   }
 }

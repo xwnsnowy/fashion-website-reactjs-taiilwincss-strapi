@@ -28,6 +28,7 @@ const ListProductsView = ({ data, type }) => {
   };
 
   const titleMap = {
+    "new-in": "Clothing & Apparel - New Arrivals",
     "mens-sweaters": "Mens Sweaters - Cashmere, Cardigans & Crewnecks",
     "womens-sweaters": "Women’s Sweaters & Cardigans",
     "mens-all-shirts-tops": "Men's Shirts, T-Shirts, Polos & Button Downs",
@@ -38,6 +39,7 @@ const ListProductsView = ({ data, type }) => {
   };
 
   const titleFaqsMap = {
+    "new-in": "Clothing & Apparel - New Arrivals",
     "mens-sweaters": "Men's Sweaters FAQs",
     "womens-sweaters": "Women’s Sweaters FAQs",
     "mens-all-shirts-tops": "Men's Shirts, T-Shirts, Polos & Button Downs",
@@ -127,14 +129,23 @@ const ListProductsView = ({ data, type }) => {
   const faqsAns3 = faqsAns3Map[type] || "Other Title Answer 3 Faqs";
 
   const isWomen = type.toLowerCase().includes("womens");
+  const newIn = type.toLowerCase().includes("new-in");
+  const bestSellers = type.toLowerCase().includes("best-sellers");
 
+  let header;
+
+  if (newIn) {
+    header = "Home / New In";
+  } else if (bestSellers) {
+    header = "Home / Best Sellers";
+  } else {
+    header = isWomen ? "Home / Women" : "Home / Men";
+  }
   const normalizedName = (input) => input.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <div className="my-5 flex-1 px-4 dark:bg-[#18191a]">
-      <span className="dark:text-white">
-        {isWomen ? "Home / Women" : "Home / Men"}
-      </span>
+      <span className="dark:text-white">{header}</span>
       <h1 className="mb-10 text-4xl dark:text-[#7DFFAF]">{title}</h1>
 
       <div className="grid grid-cols-3 gap-6">
@@ -193,62 +204,70 @@ const ListProductsView = ({ data, type }) => {
         ))}
       </div>
 
-      <div className="mt-12">
-        <h1 className="text-3xl font-medium dark:text-[#7DFFAF]">
-          {titleFaqs}
-        </h1>{" "}
-        {/* Question and Answer 1 */}
-        <div
-          className="cursor-pointer border-b-[1px] border-b-black py-5"
-          onClick={toggleFaqFirst}
-        >
-          <div className="flex justify-between ">
-            <h4 className="text-lg font-medium dark:text-white">{faqsQues1}</h4>
-            <span>
-              <FaCaretDown
-                className={`cursor-pointer ${showFaqFirst ? "rotate-180" : ""}`}
-              />
-            </span>
+      {!(newIn || bestSellers) && (
+        <div className="mt-12">
+          <h1 className="text-3xl font-medium dark:text-[#7DFFAF]">
+            {titleFaqs}
+          </h1>
+          {/* Question and Answer 1 */}
+          <div
+            className="cursor-pointer border-b-[1px] border-b-black py-5"
+            onClick={toggleFaqFirst}
+          >
+            <div className="flex justify-between ">
+              <h4 className="text-lg font-medium dark:text-white">
+                {faqsQues1}
+              </h4>
+              <span>
+                <FaCaretDown
+                  className={`cursor-pointer ${showFaqFirst ? "rotate-180" : ""}`}
+                />
+              </span>
+            </div>
+            {showFaqFirst && (
+              <p className="mt-2 dark:text-neutral-300">{faqsAns1}</p>
+            )}
           </div>
-          {showFaqFirst && (
-            <p className="mt-2 dark:text-neutral-300">{faqsAns1}</p>
-          )}
-        </div>
-        {/* Question and Answer 2 */}
-        <div
-          className="cursor-pointer border-b-[1px] border-b-black py-5"
-          onClick={toggleFaqSecond}
-        >
-          <div className="flex justify-between ">
-            <h4 className="text-lg font-medium dark:text-white">{faqsQues2}</h4>
-            <span>
-              <FaCaretDown
-                className={`cursor-pointer ${showFaqSecond ? "rotate-180" : ""}`}
-              />
-            </span>
+          {/* Question and Answer 2 */}
+          <div
+            className="cursor-pointer border-b-[1px] border-b-black py-5"
+            onClick={toggleFaqSecond}
+          >
+            <div className="flex justify-between ">
+              <h4 className="text-lg font-medium dark:text-white">
+                {faqsQues2}
+              </h4>
+              <span>
+                <FaCaretDown
+                  className={`cursor-pointer ${showFaqSecond ? "rotate-180" : ""}`}
+                />
+              </span>
+            </div>
+            {showFaqSecond && (
+              <p className="mt-2 dark:text-neutral-300">{faqsAns2}</p>
+            )}
           </div>
-          {showFaqSecond && (
-            <p className="mt-2 dark:text-neutral-300">{faqsAns2}</p>
-          )}
-        </div>
-        {/* Question and Answer 3 */}
-        <div
-          className="cursor-pointer border-b-[1px] border-b-black py-5"
-          onClick={toggleFaqThird}
-        >
-          <div className="flex justify-between ">
-            <h4 className="text-lg font-medium dark:text-white">{faqsQues3}</h4>
-            <span>
-              <FaCaretDown
-                className={`cursor-pointer ${showFaqThird ? "rotate-180" : ""}`}
-              />
-            </span>
+          {/* Question and Answer 3 */}
+          <div
+            className="cursor-pointer border-b-[1px] border-b-black py-5"
+            onClick={toggleFaqThird}
+          >
+            <div className="flex justify-between ">
+              <h4 className="text-lg font-medium dark:text-white">
+                {faqsQues3}
+              </h4>
+              <span>
+                <FaCaretDown
+                  className={`cursor-pointer ${showFaqThird ? "rotate-180" : ""}`}
+                />
+              </span>
+            </div>
+            {showFaqThird && (
+              <p className="mt-2 dark:text-neutral-300">{faqsAns3}</p>
+            )}
           </div>
-          {showFaqThird && (
-            <p className="mt-2 dark:text-neutral-300">{faqsAns3}</p>
-          )}
         </div>
-      </div>
+      )}
     </div>
   );
 };
