@@ -52,19 +52,22 @@ const ProductFilterSidebar = ({
     setShowSize(!showSize);
   };
   return (
-    <div className="w-52 max-w-52">
-      <p className="my-5 text-base tracking-wider">
-        <span className="text-lg font-medium">{length}</span> Products
+    <div className="w-52 max-w-52 px-4 dark:bg-[#18191a]">
+      <p className="my-5 text-base tracking-wider dark:text-[#7DFFAF]">
+        <span className="text-lg font-medium ">{length} </span>
+        Products
       </p>
       <hr />
 
       {/* Category */}
       <div className="py-4">
         <div className="flex items-center justify-between ">
-          <h3 className="text-lg font-semibold">Category</h3>
+          <h3 className="text-lg font-semibold dark:text-[#7DFFAF]  ">
+            Category
+          </h3>
           <span>
             <FaCaretDown
-              className={`cursor-pointer ${showCategory ? "rotate-180" : ""}`}
+              className={`cursor-pointer dark:text-white ${showCategory ? "rotate-180" : ""}`}
               onClick={toggleCategory}
             />
           </span>
@@ -78,10 +81,10 @@ const ProductFilterSidebar = ({
                 id="1"
                 className="form-checkbox mr-2 h-6 w-6 border-[1px] border-[#737373] "
               />
-              <label htmlFor="1" className="mr-1">
+              <label htmlFor="1" className="mr-1 dark:text-white">
                 Cardigans
               </label>
-              <span>(6)</span>
+              <span className="dark:text-white">(6)</span>
             </div>
             <div className="flex items-center justify-start">
               <input
@@ -90,10 +93,10 @@ const ProductFilterSidebar = ({
                 id="2"
                 className="mr-2 h-6 w-6 border-[1px] border-[#737373]"
               />
-              <label htmlFor="2" className="mr-1">
+              <label htmlFor="2" className="mr-1 dark:text-white">
                 Cardigans
               </label>
-              <span>(6)</span>
+              <span className="dark:text-white">(6)</span>
             </div>
             <div className=" flex items-center justify-start">
               <input
@@ -102,10 +105,10 @@ const ProductFilterSidebar = ({
                 id="3"
                 className="mr-2 h-6 w-6 border-[1px] border-[#737373]"
               />
-              <label htmlFor="3" className="mr-1">
+              <label htmlFor="3" className="mr-1 dark:text-white">
                 Cardigans
               </label>
-              <span>(6)</span>
+              <span className="dark:text-white">(6)</span>
             </div>
           </div>
         )}
@@ -114,19 +117,21 @@ const ProductFilterSidebar = ({
       {/* Filter by price */}
       <div className="py-4">
         <div className="flex items-center justify-between ">
-          <h3 className="text-lg font-semibold">Filter by price</h3>
+          <h3 className="text-lg font-semibold dark:text-[#7DFFAF]">
+            Filter by price
+          </h3>
           <span>
             <FaCaretDown
-              className={`cursor-pointer ${showFilterPrice ? "rotate-180" : ""}`}
+              className={`cursor-pointer dark:text-white ${showFilterPrice ? "rotate-180" : ""}`}
               onClick={toggleFilterPrice}
             />
           </span>
         </div>
         {showFilterPrice && (
           <div className="mt-1 flex gap-2">
-            <span>0</span>
+            <span className="dark:text-white">0</span>
             <input type="range" min={0} max={1000} onChange={handleMaxPrice} />
-            <span>{maxPrice}</span>
+            <span className="dark:text-white">{maxPrice}</span>
           </div>
         )}
       </div>
@@ -134,10 +139,10 @@ const ProductFilterSidebar = ({
       {/* Sort by price */}
       <div className="py-4">
         <div className="flex items-center justify-between ">
-          <h3 className="text-lg font-semibold">Sort by</h3>
+          <h3 className="text-lg font-semibold dark:text-[#7DFFAF]">Sort by</h3>
           <span>
             <FaCaretDown
-              className={`cursor-pointer ${showSortPrice ? "rotate-180" : ""}`}
+              className={`cursor-pointer dark:text-white ${showSortPrice ? "rotate-180" : ""}`}
               onClick={toggleSortPrice}
             />
           </span>
@@ -152,7 +157,10 @@ const ProductFilterSidebar = ({
                 name="price"
                 onChange={() => handleSortPriceLowTo()}
               />
-              <label htmlFor="asc"> Price (Lowest first)</label>
+              <label htmlFor="asc" className="dark:text-white">
+                {" "}
+                Price (Lowest first)
+              </label>
             </div>
             <div>
               <input
@@ -162,7 +170,10 @@ const ProductFilterSidebar = ({
                 name="price"
                 onChange={() => handleSortPriceHighTo()}
               />
-              <label htmlFor="desc"> Price (Highest first)</label>
+              <label htmlFor="desc" className="dark:text-white">
+                {" "}
+                Price (Highest first)
+              </label>
             </div>
           </div>
         )}
@@ -171,40 +182,62 @@ const ProductFilterSidebar = ({
       <hr />
       <div className="py-4">
         <div className="flex items-center justify-between ">
-          <h3 className="text-lg font-semibold">Color</h3>
+          <h3 className="text-lg font-semibold dark:text-[#7DFFAF]">Color</h3>
           <span>
             <FaCaretDown
-              className={`cursor-pointer ${showColor ? "rotate-180" : ""}`}
+              className={`cursor-pointer dark:text-white ${showColor ? "rotate-180" : ""}`}
               onClick={toggleColor}
             />
           </span>
         </div>
         {showColor && (
-          <div>
-            <p>ABC</p>
-            <p>ABC</p>
-            <p>ABC</p>
-            <p>ABC</p>
+          <div className="mt-2 flex flex-wrap justify-center gap-2">
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              Red
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              Blue
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              Green
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              Pink
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              Purple
+            </button>
           </div>
         )}
       </div>
       <hr />
       <div className="py-4">
         <div className="flex items-center justify-between ">
-          <h3 className="text-lg font-semibold">Size</h3>
+          <h3 className="text-lg font-semibold dark:text-[#7DFFAF]">Size</h3>
           <span>
             <FaCaretDown
-              className={`cursor-pointer ${showSize ? "rotate-180" : ""}`}
+              className={`cursor-pointer dark:text-white ${showSize ? "rotate-180" : ""}`}
               onClick={toggleSize}
             />
           </span>
         </div>
         {showSize && (
-          <div>
-            <p>ABC</p>
-            <p>ABC</p>
-            <p>ABC</p>
-            <p>ABC</p>
+          <div className="mt-2 flex flex-wrap justify-center gap-2">
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              XS
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              S
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              M
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              L
+            </button>
+            <button className="h-[40px] w-[50px] rounded-md bg-gray-200 hover:bg-gray-300">
+              XL
+            </button>
           </div>
         )}
       </div>

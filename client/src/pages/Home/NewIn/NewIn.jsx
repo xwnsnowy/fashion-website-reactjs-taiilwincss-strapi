@@ -35,7 +35,7 @@ text-black dark:text-white"
             <div className="flex w-[150px] flex-col justify-center gap-5">
               <div className="flex flex-col items-start justify-start gap-px">
                 <div className="text-4xl font-medium tracking-wide text-white ">
-                  New in
+                  New In
                 </div>
                 <div className=" text-xs font-normal text-black opacity-90 dark:text-neutral-300 ">
                   Shop the latest fashion trends from the top luxury designers.

@@ -36,12 +36,21 @@ const ListProducts = ({ type }) => {
   const query = qs.stringify(queryObject, { encodeValuesOnly: true });
 
   let queryType;
+  // sweater
   if (type === "mens-sweaters") {
     queryType = { name: { $eq: "men_sweater" } };
   }
   if (type === "womens-sweaters") {
     queryType = { name: { $eq: "women_sweater" } };
   }
+  // all shirts tops
+  if (type === "mens-all-shirts-tops") {
+    queryType = { name: { $eq: "mens_all_shirts_tops" } };
+  }
+  if (type === "womens-all-shirts-tops") {
+    queryType = { name: { $eq: "womens_all_shirts_tops" } };
+  }
+  // all clothes
   if (type === "mens-all") {
     queryType = { name: { $notContains: "women" } };
   }
@@ -79,16 +88,18 @@ const ListProducts = ({ type }) => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="container flex gap-8">
-      {/* Filter Sidebar */}
-      <ProductFilterSidebar
-        length={data.data.length}
-        onFilterChange={handleFilterChange}
-        maxPrice={filterMaxPrice}
-        onSortChange={handleSortChange}
-      />
-      {/* List Products */}
-      <ListProductsView data={data.data} type={type} />
+    <div className="dark:bg-[#000F0A]">
+      <div className="container flex gap-8 ">
+        {/* Filter Sidebar */}
+        <ProductFilterSidebar
+          length={data.data.length}
+          onFilterChange={handleFilterChange}
+          maxPrice={filterMaxPrice}
+          onSortChange={handleSortChange}
+        />
+        {/* List Products */}
+        <ListProductsView data={data.data} type={type} />
+      </div>
     </div>
   );
 };

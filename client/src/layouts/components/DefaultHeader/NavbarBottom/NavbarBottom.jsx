@@ -11,7 +11,7 @@ const NavbarBottom = () => {
     {
       id: 2,
       name: "Tops",
-      link: "/",
+      link: "/collections/mens-all-shirts-tops",
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ const NavbarBottom = () => {
     {
       id: 2,
       name: "Tops",
-      link: "/",
+      link: "/collections/womens-all-shirts-tops",
     },
     {
       id: 3,
@@ -65,28 +65,33 @@ const NavbarBottom = () => {
     },
     {
       id: 2,
+      name: "New In",
+      link: "/collections/new-in",
+    },
+    {
+      id: 3,
       name: "Best-Sellers",
       link: "/collections/best-sellers",
     },
     {
-      id: 3,
+      id: 4,
       name: "Men Wear",
       link: "/#services",
       children: DropdownMenWear,
     },
     {
-      id: 4,
+      id: 5,
       name: "Women Wear",
       link: "/#",
       children: DropdownWomenWear,
     },
     {
-      id: 5,
+      id: 6,
       name: "About",
       link: "/#",
     },
     {
-      id: 6,
+      id: 7,
       name: "Everworld Stories",
       link: "/#",
     },

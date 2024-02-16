@@ -30,6 +30,8 @@ const ListProductsView = ({ data, type }) => {
   const titleMap = {
     "mens-sweaters": "Mens Sweaters - Cashmere, Cardigans & Crewnecks",
     "womens-sweaters": "Women’s Sweaters & Cardigans",
+    "mens-all-shirts-tops": "Men's Shirts, T-Shirts, Polos & Button Downs",
+    "womens-all-shirts-tops": "Women's Tops, T-Shirts, Blouses & Shirts",
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
@@ -38,6 +40,8 @@ const ListProductsView = ({ data, type }) => {
   const titleFaqsMap = {
     "mens-sweaters": "Men's Sweaters FAQs",
     "womens-sweaters": "Women’s Sweaters FAQs",
+    "mens-all-shirts-tops": "Men's Shirts, T-Shirts, Polos & Button Downs",
+    "womens-all-shirts-tops": "Women's Tops, T-Shirts, Blouses & Shirts",
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
@@ -47,6 +51,8 @@ const ListProductsView = ({ data, type }) => {
     "mens-sweaters": "How do you wash and store sweaters for men?",
     "womens-sweaters":
       "What is the difference between the fabrics used in Everlane's sweaters?",
+    "mens-all-shirts-tops": "What are the best shirts to wear to work?",
+    "womens-all-shirts-tops": "What are the best shirts to wear to work?",
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
@@ -56,6 +62,8 @@ const ListProductsView = ({ data, type }) => {
     "mens-sweaters":
       "What are the different types of sweaters for men that you carry?",
     "womens-sweaters": "Which sweater styles are lightweight?",
+    "mens-all-shirts-tops": "What are your softest T-shirts?",
+    "womens-all-shirts-tops": "What are your softest T-shirts?",
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
@@ -64,32 +72,46 @@ const ListProductsView = ({ data, type }) => {
   const faqsQues3Map = {
     "mens-sweaters": "What is your lightest weight sweater?",
     "womens-sweaters": "How do I wash and take care of sweaters?",
+    "mens-all-shirts-tops": "How should men's t-shirts fit?",
+    "womens-all-shirts-tops": "How should women's t-shirts fit?",
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
   };
 
   const faqsAns1Map = {
-    "mens-sweaters": "What is your lightest weight sweater?",
+    "mens-sweaters":
+      "Everlane offers sweaters in various materials, such as cotton, cashmere, and wool. The specific differences in fabric will depend on the product, so it's best to refer to the product descriptions for details on each sweater.",
     "womens-sweaters":
       "Everlane offers sweaters in various materials, such as cotton, cashmere, and wool. The specific differences in fabric will depend on the product, so it's best to refer to the product descriptions for details on each sweater.",
+    "mens-all-shirts-tops":
+      "The best shirts for a professional work environment typically include tailored button-down shirts, dress shirts, and classic polos. These provide a polished and business-appropriate look.",
+    "womens-all-shirts-tops":
+      "The best shirts for a professional work environment typically include tailored button-down shirts, dress shirts, and classic polos. These provide a polished and business-appropriate look.",
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
   };
 
   const faqsAns2Map = {
-    "mens-sweaters": "What is your lightest weight sweater?",
+    "mens-sweaters": `Everlane offers lightweight sweater styles such as our "The Cashmere V-Neck" and "The Cotton Turtleneck" that are perfect for layering or transitional weather.`,
     "womens-sweaters": `Everlane offers lightweight sweater styles such as our "The Cashmere V-Neck" and "The Cotton Turtleneck" that are perfect for layering or transitional weather.`,
+    "mens-all-shirts-tops": `Some of our softest T-shirts include "The Pima Micro-Rib Crew" and "The Organic Cotton Box-Cut Pocket Tee." These are known for their comfort and soft feel against the skin.`,
+    "womens-all-shirts-tops": `Some of our softest T-shirts include "The Pima Micro-Rib Crew" and "The Organic Cotton Box-Cut Pocket Tee." These are known for their comfort and soft feel against the skin.`,
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
   };
 
   const faqsAns3Map = {
-    "mens-sweaters": "What is your lightest weight sweater?",
+    "mens-sweaters":
+      "To care for sweaters, it's best to hand wash or use a delicate cycle in cold water and lay them flat to dry. Avoid hanging them, which can cause stretching. Refer to the care instructions on the sweater's label.",
     "womens-sweaters":
       "To care for sweaters, it's best to hand wash or use a delicate cycle in cold water and lay them flat to dry. Avoid hanging them, which can cause stretching. Refer to the care instructions on the sweater's label.",
+    "mens-all-shirts-tops":
+      "Men's t-shirts should have a comfortable, but not overly loose, fit. They should skim the body without being too tight or baggy, with sleeves ending mid-bicep. The hem should fall around the hip area for a classic look.",
+    "womens-all-shirts-tops":
+      "Men's t-shirts should have a comfortable, but not overly loose, fit. They should skim the body without being too tight or baggy, with sleeves ending mid-bicep. The hem should fall around the hip area for a classic look.",
     "mens-all": "Shop All Men's Clothing & Apparel",
     "womens-all": "Shop All Women's Clothing & Apparel",
     "best-sellers": "Best Selling Clothing & Apparel",
@@ -109,9 +131,11 @@ const ListProductsView = ({ data, type }) => {
   const normalizedName = (input) => input.toLowerCase().replace(/\s+/g, "-");
 
   return (
-    <div className="my-5 flex-1">
-      <span>{isWomen ? "Home / Women" : "Home / Men"}</span>
-      <h1 className="mb-10 text-4xl">{title}</h1>
+    <div className="my-5 flex-1 px-4 dark:bg-[#18191a]">
+      <span className="dark:text-white">
+        {isWomen ? "Home / Women" : "Home / Men"}
+      </span>
+      <h1 className="mb-10 text-4xl dark:text-[#7DFFAF]">{title}</h1>
 
       <div className="grid grid-cols-3 gap-6">
         {data.map((item) => (
@@ -149,16 +173,16 @@ const ListProductsView = ({ data, type }) => {
                 to={`/products/${normalizedName(item?.attributes?.name)}?collection=${type}`}
                 onClick={() => handleClickProduct(item)}
               >
-                <h4 className="mb-1 mt-2 text-base font-semibold text-[#262626]">
+                <h4 className="mb-1 mt-2 text-base font-semibold text-[#262626] dark:text-white">
                   {item?.attributes?.name}
                 </h4>
               </Link>
-              <h4 className="mt-2 font-semibold">
+              <h4 className="mt-2 font-semibold dark:text-white">
                 ${item?.attributes?.original_price}
               </h4>
             </div>
             <div>
-              <p className="font-light">
+              <p className="font-light dark:text-neutral-400">
                 {
                   item?.attributes?.product_size_colors?.data[0]?.attributes
                     ?.color?.data?.attributes?.name
@@ -170,21 +194,25 @@ const ListProductsView = ({ data, type }) => {
       </div>
 
       <div className="mt-12">
-        <h1 className="text-3xl font-medium">{titleFaqs}</h1>{" "}
+        <h1 className="text-3xl font-medium dark:text-[#7DFFAF]">
+          {titleFaqs}
+        </h1>{" "}
         {/* Question and Answer 1 */}
         <div
           className="cursor-pointer border-b-[1px] border-b-black py-5"
           onClick={toggleFaqFirst}
         >
           <div className="flex justify-between ">
-            <h4 className="text-lg font-medium">{faqsQues1}</h4>
+            <h4 className="text-lg font-medium dark:text-white">{faqsQues1}</h4>
             <span>
               <FaCaretDown
                 className={`cursor-pointer ${showFaqFirst ? "rotate-180" : ""}`}
               />
             </span>
           </div>
-          {showFaqFirst && <p className="mt-2">{faqsAns1}</p>}
+          {showFaqFirst && (
+            <p className="mt-2 dark:text-neutral-300">{faqsAns1}</p>
+          )}
         </div>
         {/* Question and Answer 2 */}
         <div
@@ -192,14 +220,16 @@ const ListProductsView = ({ data, type }) => {
           onClick={toggleFaqSecond}
         >
           <div className="flex justify-between ">
-            <h4 className="text-lg font-medium">{faqsQues2}</h4>
+            <h4 className="text-lg font-medium dark:text-white">{faqsQues2}</h4>
             <span>
               <FaCaretDown
                 className={`cursor-pointer ${showFaqSecond ? "rotate-180" : ""}`}
               />
             </span>
           </div>
-          {showFaqSecond && <p className="mt-2">{faqsAns2}</p>}
+          {showFaqSecond && (
+            <p className="mt-2 dark:text-neutral-300">{faqsAns2}</p>
+          )}
         </div>
         {/* Question and Answer 3 */}
         <div
@@ -207,14 +237,16 @@ const ListProductsView = ({ data, type }) => {
           onClick={toggleFaqThird}
         >
           <div className="flex justify-between ">
-            <h4 className="text-lg font-medium">{faqsQues3}</h4>
+            <h4 className="text-lg font-medium dark:text-white">{faqsQues3}</h4>
             <span>
               <FaCaretDown
                 className={`cursor-pointer ${showFaqThird ? "rotate-180" : ""}`}
               />
             </span>
           </div>
-          {showFaqThird && <p className="mt-2">{faqsAns3}</p>}
+          {showFaqThird && (
+            <p className="mt-2 dark:text-neutral-300">{faqsAns3}</p>
+          )}
         </div>
       </div>
     </div>

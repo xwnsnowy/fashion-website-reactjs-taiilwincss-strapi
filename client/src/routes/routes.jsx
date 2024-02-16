@@ -22,6 +22,14 @@ const publicRoutes = [
     component: () => <ListProducts type="womens-all" />,
   },
   {
+    path: routes.mensAllShirtsTops,
+    component: () => <ListProducts type="mens-all-shirts-tops" />,
+  },
+  {
+    path: routes.womensAllShirtsTops,
+    component: () => <ListProducts type="womens-all-shirts-tops" />,
+  },
+  {
     path: routes.mensSweaters,
     component: () => <ListProducts type="mens-sweaters" />,
   },
@@ -32,6 +40,10 @@ const publicRoutes = [
   {
     path: routes.bestSellers,
     component: () => <ListProducts type="best-sellers" />,
+  },
+  {
+    path: routes.newIn,
+    component: () => <ListProducts type="new-in" />,
   },
 ];
 
