@@ -9,11 +9,11 @@ const Detail = ({ productDetail }) => {
   };
 
   return (
-    <div className="container min-h-[380px]">
+    <div className="container min-h-[380px] py-10">
       <div className="mb-1 space-x-4">
         <span
           onClick={() => handleTabClick("details")}
-          className={`inline-block cursor-pointer text-base font-medium uppercase text-neutral-600 underline-offset-8 ${
+          className={`inline-block cursor-pointer text-base font-medium uppercase text-neutral-600 underline-offset-8 dark:text-white ${
             activeTab === "details" ? "underline" : ""
           }`}
         >
@@ -21,7 +21,7 @@ const Detail = ({ productDetail }) => {
         </span>
         <span
           onClick={() => handleTabClick("deliveryReturns")}
-          className={`inline-block cursor-pointer text-base font-medium uppercase text-neutral-600 underline-offset-8 ${
+          className={`inline-block cursor-pointer text-base font-medium uppercase text-neutral-600 underline-offset-8 dark:text-white  ${
             activeTab === "deliveryReturns" ? "underline" : ""
           }`}
         >
@@ -32,23 +32,31 @@ const Detail = ({ productDetail }) => {
       {/* Content for detail */}
       {activeTab === "details" && (
         <div className="flex max-w-[768px] flex-col gap-2">
-          <h1 className="mt-6 text-3xl font-bold uppercase">
+          <h1 className="mt-6 text-3xl font-bold uppercase dark:text-[#7DFFAF]">
             {productDetail?.attributes?.name}
           </h1>
-          <p className="py-2 text-lg font-normal text-neutral-800">
+          <p className="py-2 text-lg font-normal text-neutral-800 dark:text-neutral-400">
             {productDetail?.attributes?.description}
           </p>
           <p>
-            <span className="text-lg font-medium">Materials: </span>
-            {productDetail?.attributes?.materials}
+            <span className="text-lg font-medium dark:text-white">
+              Materials:
+            </span>
+            <span className="dark:text-neutral-400">
+              {productDetail?.attributes?.materials}
+            </span>
           </p>
           <p>
-            <span className="text-lg font-medium">Care: </span>
-            {productDetail?.attributes?.care}
+            <span className="text-lg font-medium dark:text-white">Care: </span>
+            <span className="dark:text-neutral-400">
+              {productDetail?.attributes?.care}
+            </span>
           </p>
           <p>
-            <span className="text-lg font-medium">Made: </span>
-            {productDetail?.attributes?.made}
+            <span className="text-lg font-medium dark:text-white">Made: </span>
+            <span className="dark:text-neutral-400">
+              {productDetail?.attributes?.made}
+            </span>
           </p>
         </div>
       )}

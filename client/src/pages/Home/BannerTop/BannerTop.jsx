@@ -11,14 +11,14 @@ const BannerTop = () => {
         <div className="mt-10 flex items-center justify-center gap-5">
           <div className="cursor-pointer">
             <Link to="/collections/mens-all">
-              <span className=" bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white dark:bg-[#7DFFAF]  dark:hover:text-[#7DFFAF]">
+              <span className=" bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white dark:bg-[#18191a] dark:text-white dark:hover:text-[#7DFFAF]">
                 shop men
               </span>
             </Link>
           </div>
           <div className="cursor-pointer">
             <Link to="/collections/womens-all">
-              <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white dark:bg-[#7DFFAF]  dark:hover:text-[#7DFFAF]">
+              <span className="bg-white px-16 py-2 uppercase text-black hover:bg-black hover:text-white dark:bg-[#18191a] dark:text-white  dark:hover:text-[#7DFFAF]">
                 shop women
               </span>
             </Link>

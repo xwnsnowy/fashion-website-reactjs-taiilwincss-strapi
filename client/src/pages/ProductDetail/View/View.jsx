@@ -141,7 +141,7 @@ const View = ({ productDetail }) => {
 
   return (
     <>
-      <div className="container py-10">
+      <div className="container py-10 dark:bg-[#18191a]">
         <div className="flex w-full flex-col gap-7 sm:items-center sm:justify-center xl:flex-row xl:items-start xl:justify-between">
           <div className="flex xl:w-2/3">
             <div className="space-y-3 pl-4 sm:hidden xl:block">
@@ -150,9 +150,9 @@ const View = ({ productDetail }) => {
                   key={index}
                   src={image}
                   alt=""
-                  className={`h-40 w-28 cursor-pointer border-[1px]  p-2 ${
+                  className={`h-40 w-28 cursor-pointer p-2 ${
                     selectedImageIndex === index
-                      ? " border-[4px] border-gray-400"
+                      ? " border-[2px] border-gray-400"
                       : "border-[#ddd]"
                   }`}
                   onClick={() => handleThumbnailClick(index)}
@@ -183,15 +183,15 @@ const View = ({ productDetail }) => {
 
           <div className="flex-1">
             <div className="flex">
-              <h1 className="flex-1 font-['Petrona'] text-3xl font-semibold uppercase">
+              <h1 className="flex-1 font-['Petrona'] text-3xl font-semibold uppercase dark:text-[#7DFFAF]">
                 {productDetail?.attributes?.name}
               </h1>
-              <p className="font-['Petrona'] text-3xl font-bold">
+              <p className="font-['Petrona'] text-3xl font-bold dark:text-[#7DFFAF]">
                 ${productDetail?.attributes?.original_price}
               </p>
             </div>
             <div className="group flex cursor-pointer items-center gap-2">
-              <span className="my-2 flex text-sm">
+              <span className="my-2 flex text-sm text-yellow-500">
                 <IoStar />
                 <IoStar />
                 <IoStar />
@@ -209,7 +209,7 @@ const View = ({ productDetail }) => {
               {productDetail?.attributes?.title}
             </p>
             <div className="mt-2 flex flex-col gap-2">
-              <p>
+              <p className="dark:text-white">
                 Color:
                 <span className="ml-1 font-['Petrona'] text-lg font-bold">
                   {selectedColor}
@@ -233,11 +233,11 @@ const View = ({ productDetail }) => {
                 </Link>
               </div>
             </div>
-            <p className="relative top-6 mb-3">Size:</p>
+            <p className="relative top-6 mb-3 dark:text-white">Size:</p>
             <div className="mb-4">
               <div className="flex justify-end">
                 <button
-                  className="mb-2 inline-block underline"
+                  className="mb-2 inline-block underline dark:text-white"
                   onClick={() => setOpen(true)}
                 >
                   View size guide
@@ -300,10 +300,12 @@ const View = ({ productDetail }) => {
               </div>
             </div>
             <div className="mb-4 mt-8 flex">
-              <p className="mr-4 flex items-center justify-center">Quantity:</p>
+              <p className="mr-4 flex items-center justify-center dark:text-white ">
+                Quantity:
+              </p>
               <button
                 onClick={decrementQuantity}
-                className="flex h-8 w-8 items-center justify-center border-[1px] border-[#737373] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
+                className="flex h-8 w-8 items-center justify-center border-[1px] border-[#737373] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300 dark:text-white"
               >
                 <FaMinus />
               </button>
@@ -314,7 +316,7 @@ const View = ({ productDetail }) => {
               />
               <button
                 onClick={incrementQuantity}
-                className="flex h-8 w-8 items-center justify-center border-[1px] border-[#737373] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300"
+                className="flex h-8 w-8 items-center justify-center border-[1px] border-[#737373] text-center first-letter:cursor-pointer hover:scale-105 hover:transform hover:bg-gray-300 dark:text-white"
               >
                 <FaPlus />
               </button>
@@ -328,27 +330,29 @@ const View = ({ productDetail }) => {
             {/* Button Add to bag */}
             <div className="flex flex-col">
               <button
-                className="my-4 border-[1px] border-black  bg-[#262626] py-2 uppercase text-white hover:bg-black"
+                className="my-4 border-[1px] border-black bg-[#262626] py-2 uppercase text-white hover:bg-black dark:bg-neutral-500 dark:hover:bg-neutral-400"
                 onClick={() => addToCartHandler()}
               >
                 Add to bag
               </button>
-              <button className="border-[1px] border-black py-2">
+              <button className="border-[1px] border-black py-2 dark:bg-neutral-700 dark:text-white">
                 Wishlist
               </button>
             </div>
 
             <div className="mt-8 flex border-y-[1px] border-y-slate-300 py-3">
-              <span className="inline-block w-32 text-base font-medium">
+              <span className="inline-block w-32 text-base font-medium dark:text-white">
                 Model
               </span>
-              <span>{productDetail?.attributes?.model}</span>
+              <span className="dark:text-neutral-400">
+                {productDetail?.attributes?.model}
+              </span>
             </div>
             <div className="flex border-b-[1px] border-y-slate-300 py-5">
-              <span className="inline-block w-32 text-base font-medium">
+              <span className="inline-block w-32 text-base font-medium dark:text-white">
                 Fit
               </span>
-              <div>
+              <div className="dark:text-neutral-400">
                 <p>{productDetail?.attributes?.fit}</p>
                 <p>Questions about fit?</p>
                 <Link to="/" className="underline">
@@ -359,13 +363,17 @@ const View = ({ productDetail }) => {
                 </Link>
               </div>
             </div>
-            <div className="mt-4">
+            <div className="mt-4 ">
               <div>
-                <p className="text-lg font-semibold">Sustainability</p>
+                <p className="text-lg font-semibold dark:text-white">
+                  Sustainability
+                </p>
               </div>
               <div className="py-3">
                 <img src="" alt="" />
-                <span className="uppercase">ORGANIC COTTON</span>
+                <span className="uppercase dark:text-neutral-400">
+                  ORGANIC COTTON
+                </span>
               </div>
             </div>
           </div>

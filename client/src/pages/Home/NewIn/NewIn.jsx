@@ -54,7 +54,7 @@ text-black dark:text-white"
             {fourNewProducts.map((item) => (
               <div
                 key={item.id}
-                className="flex transform flex-col items-center justify-center rounded-md bg-white p-4 shadow-xl transition duration-300 ease-in-out hover:scale-105 dark:bg-neutral-600"
+                className="flex min-h-[320px]  transform flex-col items-center justify-center rounded-md bg-white p-4 shadow-xl transition duration-300 ease-in-out hover:scale-105 dark:bg-neutral-700"
               >
                 <Link
                   to={`/products/${normalizedName(item?.attributes.name)}`}

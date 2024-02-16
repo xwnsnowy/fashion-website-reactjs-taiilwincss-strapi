@@ -13,7 +13,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <div>
+    <div className="dark:bg-[#000F0A]">
       <View productDetail={productDetail} listProduct={listProduct} />
       <Detail productDetail={productDetail} listProduct={listProduct} />
       <Recommended productDetail={productDetail} listProduct={listProduct} />
